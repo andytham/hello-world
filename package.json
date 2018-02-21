@@ -37,7 +37,7 @@
     "bulma": "^0.6.2",
     "clean-webpack-plugin": "^0.1.18",
     "css-loader": "^0.28.7",
-    "d3": "^4.13.0",
+    "d3": "^3.5.6",
     "datamaps": "^0.5.8",
     "dotenv": "^5.0.0",
     "eslint": "^4.13.1",
@@ -55,7 +55,9 @@
     "react-dom": "^16.2.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.1",
+    "topojson": "^1.6.19",
     "url-loader": "^0.6.2",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "@types/d3": "3.5.38"
   }
 }
