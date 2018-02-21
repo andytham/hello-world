@@ -48,7 +48,7 @@ const config = {
       },
     }),
     new HtmlWebpackPlugin({
-      title:      'Narwhalll',
+      title:      'Say Hello',
       xhtml:      true,
       inject:     false,
       template:   htmlTemplate,

@@ -1,7 +1,7 @@
 {
-  "name": "react-on-rails",
+  "name": "say-hello",
   "version": "1.0.0",
-  "description": "A demo in Rails 5 and React.js",
+  "description": "How to say hello in every language",
   "main": "server.js",
   "engines": {
     "node": "9.4.0",
@@ -19,12 +19,12 @@
     "type": "git",
     "url": "git+https://git.generalassemb.ly/wdi-nyc/react-on-rails.git"
   },
-  "author": "Jason Seminara",
+  "author": "Andy Tham",
   "license": "SEE LICENSE IN LICENSE.txt",
   "bugs": {
-    "url": "https://git.generalassemb.ly/wdi-nyc/react-on-rails/issues"
+    "url": ""
   },
-  "homepage": "https://git.generalassemb.ly/wdi-nyc/react-on-rails#readme",
+  "homepage": "",
   "dependencies": {
     "babel": "^6.23.0",
     "babel-core": "*",
