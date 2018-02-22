@@ -86,4 +86,9 @@ However, there are few or little resources that connect the two and return both 
 
 #### Hi-res version of datamaps
 
-~2 hours attempting to locally load the script files so I can access the hi res version of the map, and ran into other issues trying to do so.
+~3 hours attempting to locally load the script files so I can access the hi res version of the map, and ran into other issues trying to do so.
+
+#### Toggle color on click
+https://github.com/markmarkoh/datamaps/issues/336
+
+color hover fix 2 hours
