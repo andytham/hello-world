@@ -53,7 +53,7 @@ const config = {
       xhtml:      true,
       inject:     false,
       template:   htmlTemplate,
-      appMountId: 'container',
+      appMountId: 'root',
     }),
 
     new ExtractTextPlugin('/css/[name].css', {
