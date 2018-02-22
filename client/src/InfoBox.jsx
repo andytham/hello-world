@@ -23,6 +23,9 @@ class InfoBox extends React.Component {
         <div className="country-name">
 
         </div>
+        <div className="country-native">
+
+        </div>
         <div className="hello">
 
         </div>

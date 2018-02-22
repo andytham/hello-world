@@ -119,3 +119,6 @@ set color of all, then set current clicked to different color
 dont forget after you setup your account, to input the env variable for your credentials and ALSO enable the translation api service
 
 ~1 hour transliteraion moved to POST MVP?
+
+2 hours getting jsons to work
+database seeding ~1 hour
