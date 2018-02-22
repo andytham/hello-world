@@ -1,6 +1,6 @@
 import React from 'react';
 import Map from './Map'
-
+import InfoBox from './InfoBox';
 
 export default class App extends React.Component {
   constructor(props){
@@ -23,7 +23,7 @@ export default class App extends React.Component {
       <div>
         <Map />
         <div> testing using components </div>
-        <div id="info"></div>
+        <InfoBox />
       </div>
     )
   }

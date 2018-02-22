@@ -77,7 +77,7 @@ class Map extends React.Component {
                 }
               };
               datamap.updateChoropleth(new_fills);
-              d3.select("#info").text(state_id)
+              d3.select(".country-name").text(state_id)
           });
       }
     });
