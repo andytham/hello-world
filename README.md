@@ -73,6 +73,12 @@ https://cloud.google.com/translate/docs/translating-text#translate-translate-tex
 https://github.com/annexare/Countries
 
 https://d3-geomap.github.io/
+
+https://www.safaribooksonline.com/blog/2014/02/17/building-responsible-visualizations-d3-js/
+http://www.tnoda.com/blog/2013-12-07
+https://gist.github.com/tadast/8827699
+excellent tutorial to ruby exceptions
+http://rubylearning.com/satishtalim/ruby_exceptions.html
 ### Issues and resolutions
 
 ##$# A good country to language mapping resource issue

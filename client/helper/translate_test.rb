@@ -3,12 +3,16 @@ project_id    = "sublime-lambda-196016"
 # language_code = "The ISO 639-1 code of language to translate to, eg. 'en'"
 ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "client/helper/My First Project-5a2ab66edddd.json"
 require "google/cloud/translate"
+require "json"
 
-text = "hello"
+text          = "hello"
 language_code = "tk"
 
-translate   = Google::Cloud::Translate.new project: project_id
-translation = translate.translate text, from: 'en' , to: language_code
-
-# puts "Translated '#{text}' to '#{translation.text.inspect}'"
-# puts "Original language: #{translation.from} translated to: #{translation.to}"
+begin
+  translate   = Google::Cloud::Translate.new project: project_id
+  translation = translate.translate text, from: 'en' , to: language_code
+  puts "Translated '#{text}' to '#{translation.text.inspect}'"
+  puts "Original language: #{translation.from} translated to: #{translation.to}"
+rescue
+  puts "ERROR THROW RESCUE"
+end
