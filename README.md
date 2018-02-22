@@ -96,3 +96,18 @@ https://github.com/markmarkoh/datamaps/issues/336
 
 color hover fix/toggle click 2 hours
 responsiveness 2 hours
+
+
+## TOMORROW
+
+is there a way to clear all the colors
+and work on setting up a database
+google api
+convert country to language code
+
+
+set color of all, then set current clicked to different color
+
+~1.5 hours combining country codes
+2 hours figuring out google translate api
+dont forget after you setup your account, to input the env variable for your credentials and ALSO enable the translation api service

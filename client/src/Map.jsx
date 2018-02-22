@@ -29,6 +29,9 @@ class Map extends React.Component {
     this.renderMap()
 
   }
+  componentDidUpdate(){
+    console.log("updating");
+  }
 
   renderMap(){
     var fills = {
@@ -142,8 +145,6 @@ class Map extends React.Component {
     //   .attr("width", width)
     //   .attr("height", height);
     // }
-
-
   }
 
   render(){
