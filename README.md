@@ -87,8 +87,12 @@ However, there are few or little resources that connect the two and return both 
 #### Hi-res version of datamaps
 
 ~3 hours attempting to locally load the script files so I can access the hi res version of the map, and ran into other issues trying to do so.
+#### Map drawn at the wrong level
+
+I drew the map at div element id = container, however, I forgot that I set the app mount id to container, meaning the map was being drawn and wrapping everything else inside it too. I switched it to root, which is probably React's convention
 
 #### Toggle color on click
 https://github.com/markmarkoh/datamaps/issues/336
 
-color hover fix 2 hours
+color hover fix/toggle click 2 hours
+responsiveness 2 hours
