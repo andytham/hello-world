@@ -75,7 +75,7 @@ https://github.com/annexare/Countries
 https://d3-geomap.github.io/
 ### Issues and resolutions
 
-### A good country to language mapping resource issue
+##$# A good country to language mapping resource issue
 There are plenty of resources that lists out the entire world's ever country's two letter or three code, known as the ISO 3166-1, (alpha-2 for 2 letter, alpha-3 for 3 letter, e.g. United States would be US).
 
 There are also plenty of resources that lists out from what I can tell, every language documented and it's accompanying ISO 639-1 and ISO 639-2 if they exist (two letter and three letter code, respectively).
@@ -83,3 +83,7 @@ There are also plenty of resources that lists out from what I can tell, every la
 There are also resources that list out most of the countries' official language, and even languages are predominant, either by de jure or de facto.
 
 However, there are few or little resources that connect the two and return both the country ISO code and their "main" language's ISO code. Fortunately, there happens to exist one after deep searching, and without it, there would be a lot more time needed to write a script to parse every country's language and make a new resource, or a lot of manual inputting, which is not ideal. This saves an immense amount of time.
+
+#### Hi-res version of datamaps
+
+~2 hours attempting to locally load the script files so I can access the hi res version of the map, and ran into other issues trying to do so.

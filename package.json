@@ -59,5 +59,8 @@
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0",
     "@types/d3": "3.5.38"
+  },
+  "devDependencies": {
+    "add-asset-html-webpack-plugin": "^2.1.2"
   }
 }

@@ -1,7 +1,9 @@
 import React from 'react';
 import * as d3 from 'd3';
-import Datamap from 'datamaps';
-// import map from './datamaps.world.min.js'
+import topojson from 'topojson';
+// import Datamap from 'datamaps';
+import Datamap from "./datamaps.all.hires.js"
+// import Datamap from './datamaps.world.min.js'
 import './map.css'
 
 var mapStyle = {
@@ -24,6 +26,7 @@ export default class helloWorld extends React.Component {
   }
   componentDidMount(){
     console.log("hello");
+    this.renderMap()
 
   }
 
@@ -31,6 +34,8 @@ export default class helloWorld extends React.Component {
     var basic_choropleth = new Datamap({
       element: document.getElementById("container"),
       projection: 'mercator',
+
+
       fills: {
         defaultFill: "#ABDDA4",
         authorHasTraveledTo: "red"
@@ -47,7 +52,6 @@ export default class helloWorld extends React.Component {
 
     var colors = d3.scale.category10();
     window.setInterval(function() {
-      console.log("colors?");
       basic_choropleth.updateChoropleth({
         USA: colors(Math.random() * 10),
         RUS: colors(Math.random() * 100),
@@ -58,6 +62,14 @@ export default class helloWorld extends React.Component {
         IND: colors(Math.random() * 50),
       });}, 2000
     );
+    var countries = Datamap.prototype.worldTopo.objects.world.geometries; //creates an array of every country
+    // test = d3.selectAll('basic_choropleth')
+    var wind = window.d3
+    wind.selectAll('.datamaps-subunit').on("click",click);
+    function click(){
+      console.log(d3.select(this).datum());
+    }
+    console.log(countries);
   }
 
   render(){
@@ -67,7 +79,6 @@ export default class helloWorld extends React.Component {
           hello world
         </div>
         <div id="container" style={mapStyle}></div>
-        <div>{this.renderMap()} </div>
       </div>
     )
   }
