@@ -21,7 +21,7 @@ export default class App extends React.Component {
   render(){
     return(
       <div>
-
+        <Map />
         <div> testing using components </div>
         <div id="info"></div>
       </div>

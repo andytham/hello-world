@@ -149,7 +149,7 @@ class Map extends React.Component {
   render(){
     return(
       <div>
-        <div id="info"></div>
+        <div id="container"> </div>
       </div>
     )
   }
