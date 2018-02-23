@@ -60,7 +60,7 @@ class InfoBox extends React.Component {
       for (let [index, language] of arr.entries()){
         for (let country of this.state.translationsData){
           if (language == country.language){
-            console.log(country.language, language);
+            // console.log(country.language, language);
             transObj[index] = country.hello
             // console.log(transObj);
           //   this.setState({
@@ -102,7 +102,7 @@ class InfoBox extends React.Component {
             {this.state.currentCountry.country} - {this.state.currentCountry.name} - {this.state.currentCountry.native}
           </div>
           <div className="hello">
-            hello:{this.state.translationsData ? this.grabTranslation() : "No data"}
+            {this.state.translationsData ? this.grabTranslation() : "No data"}
           </div>
         </div>
       </div>

@@ -173,19 +173,20 @@ class Map extends React.Component {
     console.log("outside d3 function", this.props);
     wind.selectAll('.datamaps-subunit')
       .on('click', function(geography) {
-          var state_id = geography.id;
-          var fillkey_obj = basic_choropleth.options.data[state_id] || {fillKey: 'defaultFill'};
-          var fillkey = fillkey_obj.fillKey;;
-          var fillkeys = Object.keys(fills);
-          var antikey = fillkeys[Math.abs(fillkeys.indexOf(fillkey) - 1)];
-          var new_fills = {
-            [geography.id] : {
-              fillKey: antikey
-            }
-          };
-          basic_choropleth.updateChoropleth(new_fills);
-          // d3.select(".country-name").text(state_id)
-          d3SelectCountry(state_id)
+        basic_choropleth.updateChoropleth(null, {reset: true}) // resets map
+        var state_id = geography.id;
+        var fillkey_obj = basic_choropleth.options.data[state_id] || {fillKey: 'defaultFill'};
+        var fillkey = fillkey_obj.fillKey;;
+        var fillkeys = Object.keys(fills);
+        var antikey = fillkeys[Math.abs(fillkeys.indexOf(fillkey) - 1)];
+        var new_fills = {
+          [geography.id] : {
+            fillKey: antikey
+          }
+        };
+        basic_choropleth.updateChoropleth(  new_fills);
+        // d3.select(".country-name").text(state_id)
+        d3SelectCountry(state_id)
 
 
 
