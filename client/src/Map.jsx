@@ -28,7 +28,7 @@ class Map extends React.Component {
   }
 
   componentDidMount(){
-    console.log(this.props);
+    // console.log(this.props);
 
     this.renderMap()
     fetch('/api/countries')
@@ -41,16 +41,14 @@ class Map extends React.Component {
       })
   }
   componentDidUpdate(){
-    console.log("updating");
 
 
   }
   selectCountry(selectedCountry){
-    console.log("slect function ran");
     this.setState({
       country: selectedCountry
     })
-    console.log(this.state.country);
+    // console.log(this.state.country);
   }
   renderMap(){
 

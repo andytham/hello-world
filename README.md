@@ -127,3 +127,6 @@ this context issue with d3 ~1.7 hours
 ```
     let d3SelectCountry = this.selectCountry //need to bind this to a function because d3 overrides the this context
 ```
+
+1.5 hours, the component would display the prev state rather than the current new updated.
+solved by moving the update state function into a method rather than willreceiveprops lifecycleas

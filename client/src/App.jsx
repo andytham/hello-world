@@ -19,10 +19,7 @@ export default class App extends React.Component {
   render(){
     return(
       <div>
-        <Map test="test" />
-
-
-
+        <Map />
       </div>
     )
   }
