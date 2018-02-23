@@ -1,4 +1,5 @@
 import React from 'react';
+import InfoBox from './InfoBox'
 import * as d3 from 'd3';
 import topojson from 'topojson';
 import Datamap from 'datamaps';
@@ -17,23 +18,42 @@ class Map extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isRendered: false
+      isRendered: false,
+      countries: "",
     }
     this.renderMap = this.renderMap.bind(this);
+    this.selectCountry = this.selectCountry.bind(this);
   }
   componentWillMount(){
-    console.log('hello');
   }
-  componentDidMount(){
-    console.log("hello");
-    this.renderMap()
 
+  componentDidMount(){
+    console.log(this.props);
+
+    this.renderMap()
+    fetch('/api/countries')
+      .then(res => res.json())
+      .then(countries => {
+        this.setState({
+          countries: countries,
+          country: "",
+        })
+      })
   }
   componentDidUpdate(){
     console.log("updating");
-  }
 
+
+  }
+  selectCountry(selectedCountry){
+    console.log("slect function ran");
+    this.setState({
+      country: selectedCountry
+    })
+    console.log(this.state.country);
+  }
   renderMap(){
+
     var fills = {
       someOtherFill: '#ff0000',
       defaultFill: '#00ff00'
@@ -63,23 +83,27 @@ class Map extends React.Component {
         highlightBorderWidth: 2,
         highlightBorderOpacity: 1
       },
-      done: function(datamap) {
-          datamap.svg.selectAll('.datamaps-subunit')
-          .on('click', function(geography) {
-              var state_id = geography.id;
-              var fillkey_obj = datamap.options.data[state_id] || {fillKey: 'defaultFill'};
-              var fillkey = fillkey_obj.fillKey;;
-              var fillkeys = Object.keys(fills);
-              var antikey = fillkeys[Math.abs(fillkeys.indexOf(fillkey) - 1)];
-              var new_fills = {
-                [geography.id] : {
-                  fillKey: antikey
-                }
-              };
-              datamap.updateChoropleth(new_fills);
-              d3.select(".country-name").text(state_id)
-          });
-      }
+      // done: function(datamap) {
+      //     datamap.svg.selectAll('.datamaps-subunit')
+      //     .on('click', function(geography) {
+      //         var state_id = geography.id;
+      //         var fillkey_obj = datamap.options.data[state_id] || {fillKey: 'defaultFill'};
+      //         var fillkey = fillkey_obj.fillKey;;
+      //         var fillkeys = Object.keys(fills);
+      //         var antikey = fillkeys[Math.abs(fillkeys.indexOf(fillkey) - 1)];
+      //         var new_fills = {
+      //           [geography.id] : {
+      //             fillKey: antikey
+      //           }
+      //         };
+      //         datamap.updateChoropleth(new_fills);
+      //         // d3.select(".country-name").text(state_id)
+      //         console.log("update state");
+      //         selectCountry(state_id)
+      //
+      //     });
+      //
+      // }
     });
 
     var colors = d3.scale.category10();
@@ -98,6 +122,8 @@ class Map extends React.Component {
     // test = d3.selectAll('basic_choropleth')
 
     var wind = window.d3
+
+
     wind.selectAll('.datamaps-subunit')
   //   .on("click", function(d) {
   //     console.log(d3.select(this).datum());
@@ -145,12 +171,38 @@ class Map extends React.Component {
     //   .attr("width", width)
     //   .attr("height", height);
     // }
-  }
+    let d3SelectCountry = this.selectCountry //need to bind this to a function because d3 overrides the this context
+    console.log("outside d3 function", this.props);
+    wind.selectAll('.datamaps-subunit')
+      .on('click', function(geography) {
+          var state_id = geography.id;
+          var fillkey_obj = basic_choropleth.options.data[state_id] || {fillKey: 'defaultFill'};
+          var fillkey = fillkey_obj.fillKey;;
+          var fillkeys = Object.keys(fills);
+          var antikey = fillkeys[Math.abs(fillkeys.indexOf(fillkey) - 1)];
+          var new_fills = {
+            [geography.id] : {
+              fillKey: antikey
+            }
+          };
+          basic_choropleth.updateChoropleth(new_fills);
+          // d3.select(".country-name").text(state_id)
+          d3SelectCountry(state_id)
+
+
+
+
+      })
+
+
+  }//end of renderMap
 
   render(){
     return(
       <div>
         <div id="container"> </div>
+        <div> ____infobox____</div>
+        {this.state.country ? <InfoBox countries={this.state.countries} country={this.state.country}/> : "loading" }
       </div>
     )
   }

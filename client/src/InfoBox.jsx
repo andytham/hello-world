@@ -8,8 +8,9 @@ class InfoBox extends React.Component {
     }
   }
   componentWillMount(){
-
+    console.log("current props", this.props);
   }
+
   componentDidUpdate(){
 
   }
@@ -21,10 +22,10 @@ class InfoBox extends React.Component {
 
         </div>
         <div className="country-name">
-
+          country: {this.props.country}
         </div>
         <div className="country-native">
-
+          native:
         </div>
         <div className="hello">
 

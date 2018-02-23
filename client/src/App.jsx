@@ -7,23 +7,22 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       isRendered: false
+
     }
   }
   componentWillMount(){
     console.log('hello');
   }
-  componentDidMount(){
-    console.log("hello");
 
-  }
 
 
   render(){
     return(
       <div>
-        <Map />
-        <div> testing using components </div>
-        <InfoBox />
+        <Map test="test" />
+
+
+
       </div>
     )
   }

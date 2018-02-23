@@ -122,3 +122,8 @@ dont forget after you setup your account, to input the env variable for your cre
 
 2 hours getting jsons to work
 database seeding ~1 hour
+
+this context issue with d3 ~1.7 hours
+```
+    let d3SelectCountry = this.selectCountry //need to bind this to a function because d3 overrides the this context
+```
