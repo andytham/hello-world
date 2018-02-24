@@ -19,16 +19,10 @@ class InfoBox extends React.Component {
           translationsData: translations
         })
       })
-
   }
 
   componentWillReceiveProps(){
-    //update current selected country
-
-    // console.log(this.props.countries);
-
   }
-
 
   componentDidUpdate(){
     // console.log("infobox updating");
@@ -60,18 +54,12 @@ class InfoBox extends React.Component {
       for (let [index, language] of arr.entries()){
         for (let country of this.state.translationsData){
           if (language == country.language){
-            // console.log(country.language, language);
             transObj[index] = country.hello
-            // console.log(transObj);
-          //   this.setState({
-          //     hello: transObj
-          //   },
-          // this.pause)
           }
         } //second loop
       } //first loop
     }
-    // console.log(typeof transObj);
+
     let arrAll = []
 
     for (let value in transObj) {
@@ -96,7 +84,7 @@ class InfoBox extends React.Component {
 
         <div className="info-box">
           <div className="country-flag">
-
+            {this.state.currentCountry ? <img src={require(`./images/${this.state.currentCountry.country_code_two.toLowerCase()}.svg`)} /> : ""}
           </div>
           <div className="country-name">
             {this.state.currentCountry.country} - {this.state.currentCountry.name} - {this.state.currentCountry.native}

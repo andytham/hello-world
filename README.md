@@ -135,3 +135,5 @@ language full names: https://gist.githubusercontent.com/jrnk/8eb57b065ea0b098d57
 
 flags from:
 https://github.com/hjnilsson/country-flags
+
+editing seeds and adding migrations 1 hour

@@ -1,5 +1,5 @@
 import React from 'react';
-import Map from './Map'
+import Map from './Map';
 import InfoBox from './InfoBox';
 
 export default class App extends React.Component {
@@ -14,7 +14,9 @@ export default class App extends React.Component {
     console.log('hello');
   }
 
-
+  componentDidMount(){
+    // console.log(Flags);
+  }
 
   render(){
     return(
