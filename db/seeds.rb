@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'json';
-countrylistFile = File.read "client/helper/combined_countries.json"
+countrylistFile = File.read "client/helper/combined_countries_include2code.json"
 countrylist = JSON.parse(countrylistFile)
 # Country.create!()
 countrylist.each do |country, info|

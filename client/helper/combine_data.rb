@@ -20,18 +20,23 @@ json2 = JSON.parse(file2)
 # the goal is to replace the two letter country code with the three letter one and keep the rest of the information intact
 
 hash = Hash.new
+hash2 = Hash.new
 json.each do |item|
-  json2.each do |key, array|
+  json2.each do |key, hashitem|
     if item["FIELD2"] == key
       puts "#{key} = #{item["FIELD3"]}"
-      hash[item["FIELD3"]] = array
+
+      hashitem["country_code_two"] = item["FIELD2"]
+      hashitem["country_code_three"] = item["FIELD3"]
+      hash[item["FIELD3"]] = hashitem
     end
   end
 end
 
-# test = File.new("./testfile", mode="w+")
-# test.write(JSON.generate(hash))
+puts hash
+test = File.new("./testfile", mode="w+")
+test.write(JSON.generate(hash))
 
-result = File.read "client/helper/combined_countries.json"
-resultParsed = JSON.parse(result)
-puts result
+# result = File.read "client/helper/combined_countries.json"
+# resultParsed = JSON.parse(result)
+# puts result
