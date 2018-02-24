@@ -10,7 +10,7 @@ countrylistFile = File.read "client/helper/combined_countries_include2code.json"
 countrylist = JSON.parse(countrylistFile)
 # Country.create!()
 countrylist.each do |country, info|
-  Country.create!(country: country, name: info["name"], native: info["native"], phone: info["phone"], continent: info["continent"], capital: info["capital"], currency: info["currency"], languages: info["languages"])
+  Country.create!(country: country, country_code_two: info["country_code_two"], name: info["name"], native: info["native"], phone: info["phone"], continent: info["continent"], capital: info["capital"], currency: info["currency"], languages: info["languages"])
 end
 
 puts "#{Country.count} countries created"
@@ -20,7 +20,7 @@ translated = JSON.parse(translatedFile)
 
 translated.each do |lang|
   if lang["hello"]
-    Translation.create!(language: lang["language"], hello: lang["hello"])
+    Translation.create!(language: lang["language"], name: lang["name"], hello: lang["hello"])
   end
 end
 
