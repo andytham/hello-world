@@ -130,3 +130,8 @@ this context issue with d3 ~1.7 hours
 
 1.5 hours, the component would display the prev state rather than the current new updated.
 solved by moving the update state function into a method rather than willreceiveprops lifecycleas
+
+language full names: https://gist.githubusercontent.com/jrnk/8eb57b065ea0b098d571/raw/97efa7bc28c72bacfebce73e28e35cdfea34db63/ISO-639-1-language.json
+
+flags from:
+https://github.com/hjnilsson/country-flags
