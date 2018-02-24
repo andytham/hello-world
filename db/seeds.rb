@@ -15,7 +15,7 @@ end
 
 puts "#{Country.count} countries created"
 
-translatedFile = File.read "client/helper/translated_fix.json"
+translatedFile = File.read "client/helper/translated_name_added.json"
 translated = JSON.parse(translatedFile)
 
 translated.each do |lang|
