@@ -22,6 +22,8 @@ export default class App extends React.Component {
   render(){
     return(
       <div>
+        <link rel="shortcut icon" href={require("./images/favicon.ico")} />
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script|Noto+Sans" rel="stylesheet" />
         <Map />
       </div>
     )

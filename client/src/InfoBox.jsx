@@ -1,5 +1,6 @@
 import React from 'react';
 import './info-box.css';
+import Title from './Title';
 
 class InfoBox extends React.Component {
   constructor(props){
@@ -32,17 +33,15 @@ class InfoBox extends React.Component {
   sync(){
     if(this.state.currentCountry.country != this.props.country){
       // console.log("prevstate same");
-
-    for (let country of this.props.countries) {
+      for (let country of this.props.countries) {
         if (country.country == this.props.country){
           // console.log(country.country, "FOUND THE COUTNRY");
           this.setState({
             currentCountry: country
           })
         }
+      }
     }
-
-  }
   }
   pause(){
     // console.log("pausing");
@@ -85,17 +84,19 @@ class InfoBox extends React.Component {
     return(
         <div className="info-box">
           {this.sync()}
+          <Title />
           <div className="left-info">
             <div className="country-flag">
-              {this.state.currentCountry ? <img className="flag-image" src={require(`./images/${this.state.currentCountry.country_code_two.toLowerCase()}.svg`)} /> : ""}
+              {this.state.currentCountry ? <img className="flag-image" src={require(`./images/flags/${this.state.currentCountry.country_code_two.toLowerCase()}.svg`)} /> : ""}
             </div>
           </div>
           <div className="right-info">
             <div className="country-name">
-              {this.state.currentCountry.country} - {this.state.currentCountry.name} - {this.state.currentCountry.native}
+              {this.state.currentCountry.name} <br />
+              ({this.state.currentCountry.native})
+              <hr />
             </div>
             <div className="hello">
-              <div className="hello-title"> How to say "Hello" in:</div>
               {this.state.translationsData ? this.grabTranslation() : "No translation data"}
             </div>
           </div>

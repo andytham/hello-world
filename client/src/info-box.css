@@ -1,22 +1,48 @@
+.loading{
+  text-align: center;
+  display: flex;
+
+}
 .info-box{
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 5px;
+  grid-template-rows: 100px 1fr 2.5fr;
+  width: 20%;
+  margin: 0 auto;
+}
+
+.title{
+  grid-row: 1 / span 1;
+  font-size: 30px;
+  text-align: center;
+  display:flex;
+  align-items: center; /* horizontal */
+  justify-content: center;
 }
 
 .left-info{
-  grid-column: 1/ span 1;
-  display:flex;
-  justify-content: flex-end;
-  border: 1px solid black;
-  background-color: red;
+  grid-row: 2 / span 1;
+  align-self: center;
 }
+
+/* right info */
+
 .right-info{
-  grid-column: 2/ span 1;
-  border: 1px solid black;
-  background-color: red;
+  grid-row: 3 /span 1;
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  /* grid-template-rows: 60px 1fr; */
+  text-align: center;
+}
+.country-name{
+  font-weight: bolder;
+  /* grid-row: 1 / span 1; */
+}
+.hello{
+  /* grid-row: 2 / span 1; */
 }
 
 .flag-image{
-  width: 100px;
+  width: 100%;
+  border: 1px black solid;
 }

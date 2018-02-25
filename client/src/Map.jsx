@@ -41,8 +41,8 @@ class Map extends React.Component {
   renderMap(){
 
     var fills = {
-      someOtherFill: '#ff0000',
-      defaultFill: '#00ff00'
+      someOtherFill: '#aa9f9f',
+      defaultFill: '#24ac24'
     };
     var basic_choropleth = new Datamap({
       element: document.getElementById("map"),
@@ -63,9 +63,14 @@ class Map extends React.Component {
       //   DEU: { fillKey: "authorHasTraveledTo" },
       // },
       geographyConfig: {
+        borderWidth: 1,
+        borderOpacity: 1,
+        borderColor: '#FFFFFF',
+
+
         highlightOnHover: false,
         highlightFillColor: '#FFFFFF',
-        highlightBorderColor: 'rgba(250, 15, 160, 0.2)',
+        highlightBorderColor: "#FFFFFF",//'rgba(250, 15, 160, 0.2)',
         highlightBorderWidth: 2,
         highlightBorderOpacity: 1
       },
@@ -128,14 +133,14 @@ class Map extends React.Component {
   .on('mouseover', function(d) {
     let $this = d3.select(this);
     // $this.style('fill',"#FFFFFF")
-    $this.style('stroke', "lightpink")
+    $this.style('stroke', "#FFFFFF")
     $this.style('stroke-width', "4")
   })
   .on('mouseout', function(d) {
     let $this = d3.select(this);
     // $this.style('fill',"#000000")
-    $this.style('stroke', "rgba(250, 15, 160, 0.2")
-    $this.style('stroke-width', "2")
+    $this.style('stroke', "#FFFFFF")
+    $this.style('stroke-width', "1")
   })
 
     console.log(countries);
@@ -161,8 +166,6 @@ class Map extends React.Component {
     console.log("outside d3 function", this.props);
     wind.selectAll('.datamaps-subunit')
       .on('click', function(geography) {
-
-
         basic_choropleth.updateChoropleth(null, {reset: true}) // resets map
         var state_id = geography.id;
         var fillkey_obj = basic_choropleth.options.data[state_id] || {fillKey: 'defaultFill'};
@@ -185,7 +188,7 @@ class Map extends React.Component {
     return(
       <div id="wrapper">
         <div id="map"> </div>
-        {this.state.country ? <InfoBox countries={this.state.countries} country={this.state.country}/> : "loading" }
+        {this.state.country ? <InfoBox countries={this.state.countries} country={this.state.country}/> : <div className="loading">"Select A Country!"</div> }
       </div>
     )
   }
