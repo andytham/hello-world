@@ -1,5 +1,10 @@
-#container{
+#map{
+  z-index: 1000;
   position: relative;
-  width: 100%;
   border: 1px solid lightblue;
+  display: block;
+  width: 80%;
+}
+.info-box{
+  width: 20%;
 }

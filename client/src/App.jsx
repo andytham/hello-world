@@ -1,6 +1,7 @@
 import React from 'react';
 import Map from './Map';
-import InfoBox from './InfoBox';
+import './app.css';
+
 
 export default class App extends React.Component {
   constructor(props){

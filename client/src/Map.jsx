@@ -3,16 +3,7 @@ import InfoBox from './InfoBox'
 import * as d3 from 'd3';
 import topojson from 'topojson';
 import Datamap from 'datamaps';
-// import Datamap from "./datamaps.all.hires.js"
-// import Datamap from './datamaps.world.min.js'
-// import './datamaps.js';
 import './map.css';
-
-var mapStyle = {
-  position: 'relative',
-  width: '500px',
-}
-
 
 class Map extends React.Component {
   constructor(props){
@@ -29,7 +20,6 @@ class Map extends React.Component {
 
   componentDidMount(){
     // console.log(this.props);
-
     this.renderMap()
     fetch('/api/countries')
       .then(res => res.json())
@@ -41,8 +31,6 @@ class Map extends React.Component {
       })
   }
   componentDidUpdate(){
-
-
   }
   selectCountry(selectedCountry){
     this.setState({
@@ -57,7 +45,7 @@ class Map extends React.Component {
       defaultFill: '#00ff00'
     };
     var basic_choropleth = new Datamap({
-      element: document.getElementById("container"),
+      element: document.getElementById("map"),
       projection: 'mercator',
       responsive: true,
       fills: fills,
@@ -173,6 +161,8 @@ class Map extends React.Component {
     console.log("outside d3 function", this.props);
     wind.selectAll('.datamaps-subunit')
       .on('click', function(geography) {
+
+
         basic_choropleth.updateChoropleth(null, {reset: true}) // resets map
         var state_id = geography.id;
         var fillkey_obj = basic_choropleth.options.data[state_id] || {fillKey: 'defaultFill'};
@@ -180,27 +170,21 @@ class Map extends React.Component {
         var fillkeys = Object.keys(fills);
         var antikey = fillkeys[Math.abs(fillkeys.indexOf(fillkey) - 1)];
         var new_fills = {
-          [geography.id] : {
-            fillKey: antikey
-          }
+          [geography.id] : colors(Math.random() * 10)
+          // {fillKey: antikey}
         };
-        basic_choropleth.updateChoropleth(  new_fills);
+        basic_choropleth.updateChoropleth(new_fills);
         // d3.select(".country-name").text(state_id)
         d3SelectCountry(state_id)
-
-
-
-
       })
-
+      console.log(basic_choropleth.svg);
 
   }//end of renderMap
 
   render(){
     return(
-      <div>
-        <div id="container"> </div>
-        <div> ____infobox____</div>
+      <div id="wrapper">
+        <div id="map"> </div>
         {this.state.country ? <InfoBox countries={this.state.countries} country={this.state.country}/> : "loading" }
       </div>
     )

@@ -64,13 +64,14 @@ class InfoBox extends React.Component {
       } //first loop
     }
 
-    // for (let value in transObj) {
-    //   arrAll.push(transObj)
-    // }
-    console.log(arrAll);
-    console.log(Object.entries(arrAll[0]));
+
+    // console.log(arrAll);
+    // console.log(Object.entries(arrAll[0]));
+    // actually pushes to DOM
+    let keyCount = 0
     return arrAll.map(translation => {
-      return (<div> {translation} </div>)
+      keyCount++
+      return (<div key={keyCount}> {translation} </div>)
     })
   } //end of grab
 
@@ -82,10 +83,8 @@ class InfoBox extends React.Component {
 
   render(){
     return(
-      <div>
-        {this.sync()}
-
         <div className="info-box">
+          {this.sync()}
           <div className="left-info">
             <div className="country-flag">
               {this.state.currentCountry ? <img className="flag-image" src={require(`./images/${this.state.currentCountry.country_code_two.toLowerCase()}.svg`)} /> : ""}
@@ -102,7 +101,6 @@ class InfoBox extends React.Component {
           </div>
 
         </div>
-      </div>
     )
   }
 }
