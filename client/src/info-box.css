@@ -1,0 +1,21 @@
+.info-box{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+}
+
+.left-info{
+  grid-column: 1/ span 1;
+  display:flex;
+  justify-content: flex-end;
+  border: 1px solid black;
+}
+.right-info{
+  grid-column: 2/ span 1;
+  border: 1px solid black;
+  background-color: red;
+}
+
+.flag-image{
+  width: 150px;
+}

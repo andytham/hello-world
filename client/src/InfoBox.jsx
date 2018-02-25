@@ -1,4 +1,6 @@
 import React from 'react';
+import './info-box.css';
+
 class InfoBox extends React.Component {
   constructor(props){
     super(props);
@@ -49,27 +51,27 @@ class InfoBox extends React.Component {
   grabTranslation(){
     // console.log('THIS RAN AGAIN');
     let transObj = {}
+    let arrAll = []
     let arr = JSON.parse(this.state.currentCountry.languages) // turn string back into array
     if(this.state.currentCountry.languages){
-      for (let [index, language] of arr.entries()){
-        for (let country of this.state.translationsData){
-          if (language == country.language){
-            transObj[index] = country.hello
+      for (let [index, country] of arr.entries()){
+        for (let language of this.state.translationsData){
+          if (country == language.language){
+            // transObj[country.name] = country.hello
+            arrAll.push(`${language.name}:  ${language.hello}`)
           }
         } //second loop
       } //first loop
     }
 
-    let arrAll = []
-
-    for (let value in transObj) {
-      arrAll.push(transObj[value])
-    }
-    // console.log(arrAll);
-    return arrAll.map(trans => {
-      return <div> {trans} </div>
+    // for (let value in transObj) {
+    //   arrAll.push(transObj)
+    // }
+    console.log(arrAll);
+    console.log(Object.entries(arrAll[0]));
+    return arrAll.map(translation => {
+      return (<div> {translation} </div>)
     })
-
   } //end of grab
 
   displayHello(arr){
@@ -77,21 +79,28 @@ class InfoBox extends React.Component {
       return <div> {entry} </div>
     })
   }
+
   render(){
     return(
       <div>
         {this.sync()}
 
         <div className="info-box">
-          <div className="country-flag">
-            {this.state.currentCountry ? <img src={require(`./images/${this.state.currentCountry.country_code_two.toLowerCase()}.svg`)} /> : ""}
+          <div className="left-info">
+            <div className="country-flag">
+              {this.state.currentCountry ? <img className="flag-image" src={require(`./images/${this.state.currentCountry.country_code_two.toLowerCase()}.svg`)} /> : ""}
+            </div>
           </div>
-          <div className="country-name">
-            {this.state.currentCountry.country} - {this.state.currentCountry.name} - {this.state.currentCountry.native}
+          <div className="right-info">
+            <div className="country-name">
+              {this.state.currentCountry.country} - {this.state.currentCountry.name} - {this.state.currentCountry.native}
+            </div>
+            <div className="hello">
+              <div className="hello-title"> How to say "Hello" in:</div>
+              {this.state.translationsData ? this.grabTranslation() : "No translation data"}
+            </div>
           </div>
-          <div className="hello">
-            {this.state.translationsData ? this.grabTranslation() : "No data"}
-          </div>
+
         </div>
       </div>
     )
