@@ -2,6 +2,7 @@ import React from 'react';
 import './info-box.css';
 import Title from './Title';
 import Translations from './Translations';
+var countryCheck = ""; //dont delete this global variable
 
 class InfoBox extends React.Component {
   constructor(props){
@@ -39,13 +40,12 @@ class InfoBox extends React.Component {
           // console.log(country.country, "FOUND THE COUTNRY");
           this.setState({
             currentCountry: country
-          })
+          }, this.pause)
         }
       }
     }
   }
   pause(){
-    // console.log("pausing");
     // console.log(this.state.hello);
   }
   grabTranslation(){
@@ -55,7 +55,8 @@ class InfoBox extends React.Component {
     let keyCount = 0
     let arr = JSON.parse(this.state.currentCountry.languages) // turn string back into array
     if(this.state.currentCountry.languages){
-      let test = arr.map(country => {
+
+      let mapped = arr.map(country => {
         for (let language of this.state.translationsData){
           if (country == language.language){
             keyCount++
@@ -63,30 +64,19 @@ class InfoBox extends React.Component {
           }
         }
       })
-      return test;
+      //play audio of first language if exists
+      if (countryCheck != this.state.currentCountry ){
+        try {
+          let sound = require(`./audio/${mapped[0].props.code}.mp3`)
+          let audio = new Audio(sound);
+          audio.play();}
+        catch(error) {}
+      }
+  countryCheck = this.state.currentCountry
+      return mapped;
+
     }
-    if(this.state.currentCountry.languages){
-      for (let [index, country] of arr.entries()){
-        for (let language of this.state.translationsData){
-          if (country == language.language){
-            // transObj[country.name] = country.hello
-            arrAll.push(`${language.name}:  ${language.hello}`)
 
-          }
-        } //second loop
-      } //first loop
-    }
-
-    // actually pushes to DOM
-
-    return arrAll.map(translation => {
-      keyCount++
-      return (
-        <div key={keyCount} className="translation">
-          {translation}
-
-        </div>)
-    })
 
   } //end of grab
 

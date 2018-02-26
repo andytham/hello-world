@@ -6,7 +6,6 @@ class Translations extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      hasAudio: false,
     }
     this.handleClick = this.handleClick.bind(this)
   }
@@ -19,12 +18,11 @@ class Translations extends React.Component {
   check(){
     try {
       let sound = require(`./audio/${this.props.code}.mp3`)
-      console.log("set state probably?");
       return <img className="speaker" onClick={this.handleClick} src={require("./images/speaker.png")}/>
     }
     catch(error) {
       // console.log(error);
-      
+
       // expected output: SyntaxError: unterminated string literal
       // Note - error messages will vary depending on browser
     }
