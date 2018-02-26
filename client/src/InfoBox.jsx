@@ -63,9 +63,6 @@ class InfoBox extends React.Component {
       } //first loop
     }
 
-
-    // console.log(arrAll);
-    // console.log(Object.entries(arrAll[0]));
     // actually pushes to DOM
     let keyCount = 0
     return arrAll.map(translation => {

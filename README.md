@@ -99,7 +99,7 @@ I drew the map at div element id = container, however, I forgot that I set the a
 
 #### Toggle color on click
 https://github.com/markmarkoh/datamaps/issues/336
-
+https://bl.ocks.org/briwa/60024d70a5aee921d5910828fe8115be
 color hover fix/toggle click 2 hours
 responsiveness 2 hours
 
@@ -137,3 +137,6 @@ flags from:
 https://github.com/hjnilsson/country-flags
 
 editing seeds and adding migrations 1 hour
+
+CSS 5 hours
+zoom attempt 4 hours

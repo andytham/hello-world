@@ -21,7 +21,6 @@ export default class App extends React.Component {
   }
   componentWillMount(){
     console.log('hello');
-    fetch("http://api.voicerss.org/?key=816658c025a0484f8f916a5a71478f40&hl=en-us&src=Hello, world!")
   }
 
   componentDidMount(){
