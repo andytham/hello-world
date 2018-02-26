@@ -20,11 +20,11 @@ class Translations extends React.Component {
     try {
       let sound = require(`./audio/${this.props.code}.mp3`)
       console.log("set state probably?");
-      return <button onClick={this.handleClick}> Play Sound </button>
+      return <img className="speaker" onClick={this.handleClick} src={require("./images/speaker.png")}/>
     }
     catch(error) {
-      console.log(error);
-
+      // console.log(error);
+      
       // expected output: SyntaxError: unterminated string literal
       // Note - error messages will vary depending on browser
     }
@@ -39,9 +39,8 @@ class Translations extends React.Component {
   render(){
     return(
       <div>
-        <div> {this.props.name}: {this.props.hello} </div>
-        {this.check()}
-        {this.state.hasAudio ? <button onClick={this.handleClick}> Play Sound </button> : ""}
+        <div> {this.props.name}: {this.props.hello} {this.check()}</div>
+
       </div>
     )
   }
