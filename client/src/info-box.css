@@ -46,3 +46,8 @@
   width: 100%;
   border: 1px black solid;
 }
+
+.translation{
+  line-height: 1.8;
+  font-size: 22px;
+}

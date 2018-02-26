@@ -67,7 +67,7 @@ class InfoBox extends React.Component {
     let keyCount = 0
     return arrAll.map(translation => {
       keyCount++
-      return (<div key={keyCount}> {translation} </div>)
+      return (<div key={keyCount} className="translation"> {translation}</div>)
     })
   } //end of grab
 
@@ -91,6 +91,7 @@ class InfoBox extends React.Component {
             <div className="country-name">
               {this.state.currentCountry.name} <br />
               ({this.state.currentCountry.native})
+              <br />
               <hr />
             </div>
             <div className="hello">
