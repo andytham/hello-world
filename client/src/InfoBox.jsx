@@ -1,6 +1,7 @@
 import React from 'react';
 import './info-box.css';
 import Title from './Title';
+import Translations from './Translations';
 
 class InfoBox extends React.Component {
   constructor(props){
@@ -51,24 +52,42 @@ class InfoBox extends React.Component {
     // console.log('THIS RAN AGAIN');
     let transObj = {}
     let arrAll = []
+    let keyCount = 0
     let arr = JSON.parse(this.state.currentCountry.languages) // turn string back into array
+    if(this.state.currentCountry.languages){
+      let test = arr.map(country => {
+        for (let language of this.state.translationsData){
+          if (country == language.language){
+            keyCount++
+            return <Translations key={keyCount} name={language.name} hello={language.hello} code={language.language} />
+          }
+        }
+      })
+      return test;
+    }
     if(this.state.currentCountry.languages){
       for (let [index, country] of arr.entries()){
         for (let language of this.state.translationsData){
           if (country == language.language){
             // transObj[country.name] = country.hello
             arrAll.push(`${language.name}:  ${language.hello}`)
+
           }
         } //second loop
       } //first loop
     }
 
     // actually pushes to DOM
-    let keyCount = 0
+
     return arrAll.map(translation => {
       keyCount++
-      return (<div key={keyCount} className="translation"> {translation}</div>)
+      return (
+        <div key={keyCount} className="translation">
+          {translation}
+
+        </div>)
     })
+
   } //end of grab
 
   displayHello(arr){

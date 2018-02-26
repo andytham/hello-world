@@ -173,7 +173,8 @@ class Map extends React.Component {
         var fillkeys = Object.keys(fills);
         var antikey = fillkeys[Math.abs(fillkeys.indexOf(fillkey) - 1)];
         var new_fills = {
-          [geography.id] : colors(Math.random() * 10)
+          [geography.id] : "#c10000"
+          // colors(Math.random() * 10)
           // {fillKey: antikey}
         };
         basic_choropleth.updateChoropleth(new_fills);
