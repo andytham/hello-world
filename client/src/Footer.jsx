@@ -6,9 +6,14 @@ import './css/footer.css';
 class Footer extends React.Component {
   render(){
     return(
-      <div>
+      <div className="footer">
         <img className="footer-img" src={heart} />
-        Created by Andy Tham - 2018
+        <div className="created">
+          Created by Andy Tham - 2018
+        </div>
+        <div className="created-small">
+          Created by Andy Tham - 2018
+        </div>
         <img className="footer-img" src={github} />
       </div>
     )

@@ -14,6 +14,7 @@ class InfoBox extends React.Component {
     this.pause = this.pause.bind(this);
     this.displayHello = this.displayHello.bind(this);
     this.playHello = this.playHello.bind(this);
+    this.isNepal = this.isNepal.bind(this);
   }
   componentWillMount() {
     // console.log('mounting');
@@ -88,6 +89,16 @@ class InfoBox extends React.Component {
     })
   }
 
+  isNepal(){
+    //check for the abnormal flag
+    if (this.state.currentCountry.country_code_two == "NP"){
+      return <img className="flag-image nepal" src={require(`./images/flags/${this.state.currentCountry.country_code_two.toLowerCase()}.svg`)}/>
+    } else {
+      console.log(this.state.currentCountry.country_code_two);
+      return <img className="flag-image" src={require(`./images/flags/${this.state.currentCountry.country_code_two.toLowerCase()}.svg`)}/>
+    }
+  }
+
   render() {
     return (
       <div className="info-box">
@@ -96,7 +107,7 @@ class InfoBox extends React.Component {
           <div className="country-flag">
             {
               this.state.currentCountry
-                ? <img className="flag-image" src={require(`./images/flags/${this.state.currentCountry.country_code_two.toLowerCase()}.svg`)}/>
+                ? this.isNepal()
                 : ""
             }
           </div>
@@ -115,6 +126,9 @@ class InfoBox extends React.Component {
                 ? this.grabTranslation()
                 : "No translation data"
             }
+          </div>
+          <div className="misc">
+
           </div>
         </div>
 

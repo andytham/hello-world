@@ -19,6 +19,7 @@
   display:flex;
   align-items: center; /* horizontal */
   justify-content: center;
+  margin-top: 20px;
 }
 
 .buttons{
@@ -26,7 +27,6 @@
   display: flex;
   width: 100%;
   justify-content: space-around;
-  border: lightpink 1px solid;
 }
 
 .button{
@@ -37,13 +37,13 @@
   grid-row: 3 / span 1;
   display: grid;
   grid-template-rows: 1.4fr 2fr;
-  border: 1px red solid;
 }
 
 .top-info{
   grid-row: 1 / span 1;
   display:flex;
   align-items: center;
+    justify-content: center;
 }
 
 .flag-image{
@@ -53,9 +53,11 @@
   align-self: center;
 }
 
+.nepal{
+  border: none !important;
+}
 .bottom-info{
   grid-row: 2 / span 1;
-  border: 1px green solid;
   display: flex;
   flex-direction: column;
   /* grid-template-rows: 60px 1fr; */
@@ -65,6 +67,16 @@
 .country-name{
   font-weight: bolder;
   /* grid-row: 1 / span 1; */
+  font-size: 21px;
+}
+
+.hello{
+  /* grid-row: 2 / span 1; */
+  font-size: 16px;
+}
+
+.misc{
+
 }
 
 .footer{
@@ -89,9 +101,7 @@
   text-align: center;
 }
 
-.hello{
-  /* grid-row: 2 / span 1; */
-}
+
 
 
 

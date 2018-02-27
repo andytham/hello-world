@@ -168,6 +168,7 @@ class Map extends React.Component {
               Pick a country
             </div>
           }
+          <Footer />
         </div>
 
 

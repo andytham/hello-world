@@ -1,3 +1,18 @@
+.footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.create{
+  margin: 10px;
+  text-align: center;
+}
+.created-small{
+  margin: 10px;
+  text-align: center;
+  display: none;;
+}
 .footer-img{
-  width: 40px;
+  width: 25px;
+  margin: 8px;
 }
