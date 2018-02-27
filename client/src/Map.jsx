@@ -4,6 +4,7 @@ import * as d3 from 'd3';
 import topojson from 'topojson';
 import Datamap from 'datamaps';
 import './map.css';
+var animating = false;
 
 class Map extends React.Component {
   constructor(props){
@@ -39,6 +40,7 @@ class Map extends React.Component {
     })
     // console.log(this.state.country);
   }
+
   renderMap(){
 
     var fills = {
@@ -75,47 +77,11 @@ class Map extends React.Component {
         highlightBorderWidth: 2,
         highlightBorderOpacity: 1
       },
-      // done: function(datamap) {
-      //     datamap.svg.selectAll('.datamaps-subunit')
-      //     .on('click', function(geography) {
-      //         var state_id = geography.id;
-      //         var fillkey_obj = datamap.options.data[state_id] || {fillKey: 'defaultFill'};
-      //         var fillkey = fillkey_obj.fillKey;;
-      //         var fillkeys = Object.keys(fills);
-      //         var antikey = fillkeys[Math.abs(fillkeys.indexOf(fillkey) - 1)];
-      //         var new_fills = {
-      //           [geography.id] : {
-      //             fillKey: antikey
-      //           }
-      //         };
-      //         datamap.updateChoropleth(new_fills);
-      //         // d3.select(".country-name").text(state_id)
-      //         console.log("update state");
-      //         selectCountry(state_id)
-      //
-      //     });
-      //
-      // }
     });
 
     var colors = d3.scale.category10();
-    // window.setInterval(function() {
-    //   basic_choropleth.updateChoropleth({
-    //     USA: colors(Math.random() * 10),
-    //     RUS: colors(Math.random() * 100),
-    //     AUS: { fillKey: 'authorHasTraveledTo' },
-    //     BRA: colors(Math.random() * 50),
-    //     CAN: colors(Math.random() * 50),
-    //     ZAF: colors(Math.random() * 50),
-    //     IND: colors(Math.random() * 50),
-    //   });}, 2000
-    // );
-    var countries = Datamap.prototype.worldTopo.objects.world.geometries; //creates an array of every country
-    // test = d3.selectAll('basic_choropleth')
 
     var wind = window.d3
-
-
     wind.selectAll('.datamaps-subunit')
   //   .on("click", function(d) {
   //     console.log(d3.select(this).datum());
@@ -144,25 +110,12 @@ class Map extends React.Component {
     $this.style('stroke-width', "1")
   })
 
-    console.log(countries);
 
     //built in resize in datamaps
     d3.select(window).on('resize', function() {
       basic_choropleth.resize()
     });
-    // d3.select(window).on("resize", resize);
-    // function resize() {
-    //   console.log("RESIZING");
-    //   var map = d3.select('.datamap');
-    //   console.log(map[0][0]);
-    //   var container = document.getElementById("container");
-    //   console.log('width',container.clientWidth);
-    //   var width = container.clientWidth;
-    //   var height = container.clientHeight;
-    //   map
-    //   .attr("width", width)
-    //   .attr("height", height);
-    // }
+
     let d3SelectCountry = this.selectCountry //need to bind this to a function because d3 overrides the this context
     console.log("outside d3 function", this.props);
     wind.selectAll('.datamaps-subunit')
@@ -183,57 +136,39 @@ class Map extends React.Component {
         // d3.select(".country-name").text(state_id)
         d3SelectCountry(state_id)
       })
-      console.log(basic_choropleth.svg);
+
+      let d3animate = this.animateState
       wind.select('#test').on('click',function () {
-      let poop = wind.selectAll('.datamaps-subunit')
-      console.log(poop[0][0].__data__.id);
+        animating = true;
+        let poop = wind.selectAll('.datamaps-subunit')
+        this.playInterval = setInterval(function() {
 
+          let gah = Math.trunc(Math.random() * poop[0].length)
+          let state_id = poop[0][gah].__data__.id
+          basic_choropleth.updateChoropleth(null, {reset: true}) // resets map
+          var fillkey_obj = basic_choropleth.options.data[state_id] || {fillKey: 'defaultFill'};
+          var fillkey = fillkey_obj.fillKey;;
+          var fillkeys = Object.keys(fills);
+          var antikey = fillkeys[Math.abs(fillkeys.indexOf(fillkey) - 1)];
+          var new_fills = {
+            [state_id] : "#c10000"
 
-      var playInterval = setInterval(function() {
-        let gah = Math.trunc(Math.random() * poop[0].length)
-        console.log(gah);
-        let state_id = poop[0][gah].__data__.id
-        basic_choropleth.updateChoropleth(null, {reset: true}) // resets map
-        var fillkey_obj = basic_choropleth.options.data[state_id] || {fillKey: 'defaultFill'};
-        var fillkey = fillkey_obj.fillKey;;
-        var fillkeys = Object.keys(fills);
-        var antikey = fillkeys[Math.abs(fillkeys.indexOf(fillkey) - 1)];
-        var new_fills = {
-          [state_id] : "#c10000"
-          // colors(Math.random() * 10)
-          // {fillKey: antikey}
-        };
-        basic_choropleth.updateChoropleth(new_fills);
-        // d3.select(".country-name").text(state_id)
-        d3SelectCountry(state_id)
-       }, 2000);
-     })
+          };
+          basic_choropleth.updateChoropleth(new_fills);
+          // d3.select(".country-name").text(state_id)
+          d3SelectCountry(state_id)
+         }, 2000);
+
+        wind.select('#stop').on('click', function(){
+          console.log(this.playInterval);
+          clearInterval(this.playInterval)
+        })
+       })
 
   }//end of renderMap
 
   handleClick(){
-    // var wind = window.d3
-    // let poop = wind.selectAll('.datamaps-subunit')
-    // console.log(poop[0][0].__data__.id);
-    //
-    // let gah = Math.trunc(Math.random() * poop[0].length)
-    // console.log(gah);
-    // let state_id = poop[0][gah].__data__.id
-    // playInterval = setInterval(function() {
-    //   basic_choropleth.updateChoropleth(null, {reset: true}) // resets map
-    //   var fillkey_obj = basic_choropleth.options.data[state_id] || {fillKey: 'defaultFill'};
-    //   var fillkey = fillkey_obj.fillKey;;
-    //   var fillkeys = Object.keys(fills);
-    //   var antikey = fillkeys[Math.abs(fillkeys.indexOf(fillkey) - 1)];
-    //   var new_fills = {
-    //     [state_id] : "#c10000"
-    //     // colors(Math.random() * 10)
-    //     // {fillKey: antikey}
-    //   };
-    //   basic_choropleth.updateChoropleth(new_fills);
-    //   // d3.select(".country-name").text(state_id)
-    //   d3SelectCountry(state_id)
-    //  }, 2000);
+    clearInterval(this.playInterval)
 
   }
 
@@ -243,7 +178,8 @@ class Map extends React.Component {
       <div id="wrapper">
         <div id="map"> </div>
         <button id="test"> test</button>
-        <button onClick={this.handleClick}> Play All </button>
+        <button id="stop"> stop </button>
+        <button onClick={this.handleClick}> handle click</button>
         {this.state.country ? <InfoBox countries={this.state.countries} country={this.state.country}/> : <div className="loading">"Select A Country!"</div> }
       </div>
     )
