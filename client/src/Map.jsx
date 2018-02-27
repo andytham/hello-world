@@ -3,8 +3,8 @@ import InfoBox from './InfoBox'
 import * as d3 from 'd3';
 import topojson from 'topojson';
 import Datamap from 'datamaps';
-import './map.css';
-var animating = false;
+import Title from './Title';
+import './css/map.css';
 
 class Map extends React.Component {
   constructor(props){
@@ -52,28 +52,13 @@ class Map extends React.Component {
       projection: 'mercator',
       responsive: true,
       fills: fills,
-      // {
-      //   defaultFill: "#ABDDA4",
-      //   authorHasTraveledTo: "red"
-      // },
-
-      // data: {
-      //   USA: { fillKey: "authorHasTraveledTo" },
-      //   JPN: { fillKey: "authorHasTraveledTo" },
-      //   ITA: { fillKey: "authorHasTraveledTo" },
-      //   CRI: { fillKey: "authorHasTraveledTo" },
-      //   KOR: { fillKey: "authorHasTraveledTo" },
-      //   DEU: { fillKey: "authorHasTraveledTo" },
-      // },
       geographyConfig: {
         borderWidth: 1,
         borderOpacity: 1,
         borderColor: '#FFFFFF',
-
-
         highlightOnHover: false,
         highlightFillColor: '#FFFFFF',
-        highlightBorderColor: "#FFFFFF",//'rgba(250, 15, 160, 0.2)',
+        highlightBorderColor: "#FFFFFF",
         highlightBorderWidth: 2,
         highlightBorderOpacity: 1
       },
@@ -123,10 +108,6 @@ class Map extends React.Component {
         console.log(geography);
         basic_choropleth.updateChoropleth(null, {reset: true}) // resets map
         var state_id = geography.id;
-        var fillkey_obj = basic_choropleth.options.data[state_id] || {fillKey: 'defaultFill'};
-        var fillkey = fillkey_obj.fillKey;;
-        var fillkeys = Object.keys(fills);
-        var antikey = fillkeys[Math.abs(fillkeys.indexOf(fillkey) - 1)];
         var new_fills = {
           [geography.id] : "#c10000"
           // colors(Math.random() * 10)
@@ -141,7 +122,6 @@ class Map extends React.Component {
 
       let d3animateState = this.animateState;
       wind.select('#test').on('click',function () {
-        animating = true;
         let poop = wind.selectAll('.datamaps-subunit')
         let playInterval = setInterval(function() {
 
@@ -177,7 +157,16 @@ class Map extends React.Component {
         <div id="map"> </div>
         <button id="test"> test</button>
         <button id="stop"> stop </button>
-        {this.state.country ? <InfoBox countries={this.state.countries} country={this.state.country}/> : <div className="loading">"Select A Country!"</div> }
+        {
+          this.state.country
+          ?
+          <InfoBox countries={this.state.countries} country={this.state.country}/>
+          :
+          <div className="loading">
+            <Title />
+            "Select A Country!"
+          </div>
+        }
       </div>
     )
   }

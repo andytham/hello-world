@@ -1,5 +1,5 @@
 import React from 'react';
-import './info-box.css';
+import './css/info-box.css';
 import Title from './Title';
 import Translations from './Translations';
 var countryCheck = ""; //dont delete this global variable
