@@ -4,6 +4,8 @@ import * as d3 from 'd3';
 import topojson from 'topojson';
 import Datamap from 'datamaps';
 import Title from './Title';
+import Loading from './Loading';
+import Footer from './Footer';
 import './css/map.css';
 
 class Map extends React.Component {
@@ -15,7 +17,6 @@ class Map extends React.Component {
     }
     this.renderMap = this.renderMap.bind(this);
     this.selectCountry = this.selectCountry.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
   componentWillMount(){
   }
@@ -120,7 +121,7 @@ class Map extends React.Component {
 
       //randomly select country to display
       let d3animateState = this.animateState;
-      wind.select('#test').on('click',function () {
+      wind.select('#animate').on('click',function () {
         let poop = wind.selectAll('.datamaps-subunit')
         let playInterval = setInterval(function() {
 
@@ -145,26 +146,29 @@ class Map extends React.Component {
 
   }//end of renderMap
 
-  handleClick(){
-    clearInterval(this.playInterval)
-
-  }
 
   render(){
     return(
       <div id="wrapper">
         <div id="map"> </div>
-        <button id="test"> test</button>
-        <button id="stop"> stop </button>
-        {
-          this.state.country
-          ?
-          <InfoBox countries={this.state.countries} country={this.state.country}/>
-          :
-          <div className="loading">
-            <Title />
+        <div className="not-map">
+          <Title />
+          <div className="buttons">
+            <button id="animate"> play</button>
+            <button id="stop"> stop </button>
           </div>
-        }
+          {
+            this.state.country
+            ?
+            <InfoBox countries={this.state.countries} country={this.state.country}/>
+            :
+            <div className="loading">
+              Pick a country
+            </div>
+          }
+        </div>
+
+
       </div>
     )
   }

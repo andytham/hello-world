@@ -3,9 +3,9 @@
   display: flex;
 
 }
-.info-box{
+.not-map{
   display: grid;
-  grid-template-rows: 100px 1fr 2.5fr;
+  grid-template-rows: 100px 50px 1fr 50px;
   width: 20%;
   margin: 0 auto;
 }
@@ -17,6 +17,19 @@
   display:flex;
   align-items: center; /* horizontal */
   justify-content: center;
+}
+
+.buttons{
+  grid-row: 2 / span 1;
+}
+
+.info-box{
+  grid-row: 3 / span 1;
+
+}
+
+.footer{
+  grid-row: 4 / span 1;
 }
 
 .left-info{

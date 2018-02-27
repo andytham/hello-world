@@ -93,8 +93,7 @@ class InfoBox extends React.Component {
     return (
       <div className="info-box">
         {this.sync()}
-        <Title/>
-        <div className="left-info">
+        <div className="top-info">
           <div className="country-flag">
             {
               this.state.currentCountry
@@ -103,7 +102,7 @@ class InfoBox extends React.Component {
             }
           </div>
         </div>
-        <div className="right-info">
+        <div className="bottom-info">
           <div className="country-name">
             {this.state.currentCountry.name}
             <br/>
