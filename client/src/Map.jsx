@@ -104,10 +104,10 @@ class Map extends React.Component {
     });
 
     let d3SelectCountry = this.selectCountry //need to bind this to a function because d3 overrides the this context
-    console.log("outside d3 function", this.props);
+    // console.log("outside d3 function", this.props);
     wind.selectAll('.datamaps-subunit')
       .on('click', function(geography) {
-        console.log(geography);
+        // console.log(geography);
         basic_choropleth.updateChoropleth(null, {reset: true}) // resets map
         var state_id = geography.id;
         var new_fills = {
@@ -126,6 +126,8 @@ class Map extends React.Component {
       wind.select('#animate').on('click',function () {
         if (!d3isAnimating){
           d3isAnimating = true;
+          wind.select('#animate').style('display','none')
+          wind.select('#stop').style('display','block')
           let poop = wind.selectAll('.datamaps-subunit')
           let playInterval = setInterval(function() {
 
@@ -140,6 +142,8 @@ class Map extends React.Component {
             d3SelectCountry(state_id)
            }, 2000);
            wind.select('#stop').on('click', function(){
+             wind.select('#stop').style('display','none')
+             wind.select('#animate').style('display','block')
              d3isAnimating = false;
              clearInterval(playInterval)
            })

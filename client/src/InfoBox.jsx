@@ -93,7 +93,7 @@ class InfoBox extends React.Component {
     if (this.state.currentCountry.country_code_two == "NP"){
       return <img className="flag-image nepal" src={require(`./images/flags/${this.state.currentCountry.country_code_two.toLowerCase()}.svg`)}/>
     } else {
-      console.log(this.state.currentCountry.country_code_two);
+      // console.log(this.state.currentCountry.country_code_two);
       return <img className="flag-image" src={require(`./images/flags/${this.state.currentCountry.country_code_two.toLowerCase()}.svg`)}/>
     }
   }

@@ -37,6 +37,10 @@
   width: 50px;
 }
 
+#stop{
+  display: none;
+}
+
 .info-box{
   grid-row: 3 / span 1;
   display: grid;
