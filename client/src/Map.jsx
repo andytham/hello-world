@@ -119,7 +119,6 @@ class Map extends React.Component {
       })
 
       //randomly select country to display
-
       let d3animateState = this.animateState;
       wind.select('#test').on('click',function () {
         let poop = wind.selectAll('.datamaps-subunit')
@@ -164,7 +163,6 @@ class Map extends React.Component {
           :
           <div className="loading">
             <Title />
-            "Select A Country!"
           </div>
         }
       </div>

@@ -76,7 +76,7 @@ class InfoBox extends React.Component {
         audio.play();
         return;
       } catch (error) {
-        console.log("no audio for", mapped[i]);
+        //no audio found for that language
       }
     }
   }
@@ -90,36 +90,38 @@ class InfoBox extends React.Component {
   }
 
   render() {
-    return (<div className="info-box">
-      {this.sync()}
-      <Title/>
-      <div className="left-info">
-        <div className="country-flag">
-          {
-            this.state.currentCountry
-              ? <img className="flag-image" src={require(`./images/flags/${this.state.currentCountry.country_code_two.toLowerCase()}.svg`)}/>
-              : ""
-          }
+    return (
+      <div className="info-box">
+        {this.sync()}
+        <Title/>
+        <div className="left-info">
+          <div className="country-flag">
+            {
+              this.state.currentCountry
+                ? <img className="flag-image" src={require(`./images/flags/${this.state.currentCountry.country_code_two.toLowerCase()}.svg`)}/>
+                : ""
+            }
+          </div>
         </div>
-      </div>
-      <div className="right-info">
-        <div className="country-name">
-          {this.state.currentCountry.name}
-          <br/>
-          ({this.state.currentCountry.native})
-          <br/>
-          <hr/>
+        <div className="right-info">
+          <div className="country-name">
+            {this.state.currentCountry.name}
+            <br/>
+            ({this.state.currentCountry.native})
+            <br/>
+            <hr/>
+          </div>
+          <div className="hello">
+            {
+              this.state.translationsData
+                ? this.grabTranslation()
+                : "No translation data"
+            }
+          </div>
         </div>
-        <div className="hello">
-          {
-            this.state.translationsData
-              ? this.grabTranslation()
-              : "No translation data"
-          }
-        </div>
-      </div>
 
-    </div>)
+      </div>
+    )
   }
 }
 export default InfoBox;
