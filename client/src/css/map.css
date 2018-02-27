@@ -1,0 +1,9 @@
+#map{
+  z-index: 1000;
+  position: relative;
+  display: block;
+  width: 78%;
+  background-color: #2287c1;
+  /* background: url('http://www.xsjjys.com/data/out/229/WHDQ-513650512.jpg');
+  background-size: cover ; */
+}

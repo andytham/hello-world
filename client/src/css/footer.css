@@ -1,0 +1,25 @@
+.footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.created{
+  margin: 10px;
+  text-align: center;
+  display: block;
+}
+.created-small{
+  margin: 10px;
+  text-align: center;
+  display: none;
+}
+
+.created-smaller{
+  display: block;
+  display:none;
+}
+
+.footer-img{
+  width: 25px;
+  margin: 8px;
+}

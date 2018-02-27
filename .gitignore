@@ -12,6 +12,8 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+# ignore google auth key
+client/helper/My First Project-5a2ab66edddd.json
 
 .byebug_history
 public/*

@@ -1,6 +1,7 @@
 const webpack            = require('webpack');
 const path               = require('path');
 const HtmlWebpackPlugin  = require('html-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const ExtractTextPlugin  = require('extract-text-webpack-plugin');
 const htmlTemplate       = require('html-webpack-template');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -52,8 +53,9 @@ const config = {
       xhtml:      true,
       inject:     false,
       template:   htmlTemplate,
-      appMountId: 'container',
+      appMountId: 'root',
     }),
+
     new ExtractTextPlugin('/css/[name].css', {
       allChunks: true,
     }),
@@ -136,6 +138,15 @@ const config = {
             mimetype: 'mimetype=image/svg+xml',
           },
         }],
+      },
+      {
+        test: /\.(mp3)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ]
       },
     ],
   },
