@@ -137,19 +137,17 @@ class Map extends React.Component {
         d3SelectCountry(state_id)
       })
 
-      let d3animate = this.animateState
+      //randomly select country to display
+
+      let d3animateState = this.animateState;
       wind.select('#test').on('click',function () {
         animating = true;
         let poop = wind.selectAll('.datamaps-subunit')
-        this.playInterval = setInterval(function() {
+        let playInterval = setInterval(function() {
 
           let gah = Math.trunc(Math.random() * poop[0].length)
           let state_id = poop[0][gah].__data__.id
           basic_choropleth.updateChoropleth(null, {reset: true}) // resets map
-          var fillkey_obj = basic_choropleth.options.data[state_id] || {fillKey: 'defaultFill'};
-          var fillkey = fillkey_obj.fillKey;;
-          var fillkeys = Object.keys(fills);
-          var antikey = fillkeys[Math.abs(fillkeys.indexOf(fillkey) - 1)];
           var new_fills = {
             [state_id] : "#c10000"
 
@@ -158,10 +156,11 @@ class Map extends React.Component {
           // d3.select(".country-name").text(state_id)
           d3SelectCountry(state_id)
          }, 2000);
+         console.log(playInterval);
 
         wind.select('#stop').on('click', function(){
-          console.log(this.playInterval);
-          clearInterval(this.playInterval)
+          console.log(playInterval);
+          clearInterval(playInterval)
         })
        })
 
@@ -172,14 +171,12 @@ class Map extends React.Component {
 
   }
 
-
   render(){
     return(
       <div id="wrapper">
         <div id="map"> </div>
         <button id="test"> test</button>
         <button id="stop"> stop </button>
-        <button onClick={this.handleClick}> handle click</button>
         {this.state.country ? <InfoBox countries={this.state.countries} country={this.state.country}/> : <div className="loading">"Select A Country!"</div> }
       </div>
     )
