@@ -1,6 +1,5 @@
 import React from 'react';
 import './css/info-box.css';
-import Title from './Title';
 import Translations from './Translations';
 var countryCheck = ""; //dont delete this variable, super hotfix
 

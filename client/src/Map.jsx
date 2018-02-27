@@ -7,6 +7,8 @@ import Title from './Title';
 import Loading from './Loading';
 import Footer from './Footer';
 import './css/map.css';
+import playImg from './images/play.png';
+import stopImg  from './images/stop.jpg';
 
 class Map extends React.Component {
   constructor(props){
@@ -154,8 +156,8 @@ class Map extends React.Component {
         <div className="not-map">
           <Title />
           <div className="buttons">
-            <button id="animate"> play</button>
-            <button id="stop"> stop </button>
+            <img className="button" id="animate" src={playImg} />
+            <img className="button" id="stop" src={stopImg} />
           </div>
           {
             this.state.country
