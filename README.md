@@ -142,3 +142,7 @@ CSS 5 hours
 zoom attempt 4 hours
 
 TODO
+
+ocean water?
+footer
+HELLO in script
