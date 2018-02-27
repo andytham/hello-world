@@ -13,6 +13,9 @@ class Footer extends React.Component {
         <div className="created-small">
           Created by Andy Tham
         </div>
+        <div className="created-smaller">
+          Andy Tham
+        </div>
         <img className="footer-img" src={github} />
       </div>
     )

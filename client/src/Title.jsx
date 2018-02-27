@@ -4,7 +4,8 @@ class Title extends Component {
   render(){
     return(
       <div className="title">
-        How to say&nbsp; <span className="fancy">"Hello!"</span>
+        <div className="no-wrap-text"> How to say&nbsp; </div>
+        <div className="fancy">"Hello!"</div>
       </div>
     )
   }

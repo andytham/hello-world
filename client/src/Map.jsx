@@ -134,16 +134,13 @@ class Map extends React.Component {
             basic_choropleth.updateChoropleth(null, {reset: true}) // resets map
             var new_fills = {
               [state_id] : "#c10000"
-
             };
             basic_choropleth.updateChoropleth(new_fills);
             // d3.select(".country-name").text(state_id)
             d3SelectCountry(state_id)
            }, 2000);
-           console.log(playInterval);
            wind.select('#stop').on('click', function(){
              d3isAnimating = false;
-             console.log(playInterval);
              clearInterval(playInterval)
            })
         }

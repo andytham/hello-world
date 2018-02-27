@@ -127,7 +127,10 @@ class InfoBox extends React.Component {
             }
           </div>
           <div className="misc">
-
+            <hr />
+            Capital: {this.state.currentCountry.capital}
+            <br />
+            Currency: {this.state.currentCountry.currency}
           </div>
         </div>
 
