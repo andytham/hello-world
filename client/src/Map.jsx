@@ -122,27 +122,32 @@ class Map extends React.Component {
 
       //randomly select country to display
       let d3animateState = this.animateState;
+      let d3isAnimating = false;
       wind.select('#animate').on('click',function () {
-        let poop = wind.selectAll('.datamaps-subunit')
-        let playInterval = setInterval(function() {
+        if (!d3isAnimating){
+          d3isAnimating = true;
+          let poop = wind.selectAll('.datamaps-subunit')
+          let playInterval = setInterval(function() {
 
-          let gah = Math.trunc(Math.random() * poop[0].length)
-          let state_id = poop[0][gah].__data__.id
-          basic_choropleth.updateChoropleth(null, {reset: true}) // resets map
-          var new_fills = {
-            [state_id] : "#c10000"
+            let gah = Math.trunc(Math.random() * poop[0].length)
+            let state_id = poop[0][gah].__data__.id
+            basic_choropleth.updateChoropleth(null, {reset: true}) // resets map
+            var new_fills = {
+              [state_id] : "#c10000"
 
-          };
-          basic_choropleth.updateChoropleth(new_fills);
-          // d3.select(".country-name").text(state_id)
-          d3SelectCountry(state_id)
-         }, 2000);
-         console.log(playInterval);
+            };
+            basic_choropleth.updateChoropleth(new_fills);
+            // d3.select(".country-name").text(state_id)
+            d3SelectCountry(state_id)
+           }, 2000);
+           console.log(playInterval);
+           wind.select('#stop').on('click', function(){
+             d3isAnimating = false;
+             console.log(playInterval);
+             clearInterval(playInterval)
+           })
+        }
 
-        wind.select('#stop').on('click', function(){
-          console.log(playInterval);
-          clearInterval(playInterval)
-        })
        })
 
   }//end of renderMap
