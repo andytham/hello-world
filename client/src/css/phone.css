@@ -17,7 +17,10 @@
     width: 100%;
     grid-row: 2 /span 1;
   }
-  .
+  .speaker{
+    width: 20px;
+  }
+
 }
 @media only screen and (min-width : 480px) and (max-width : 768px){
 /* Styles */

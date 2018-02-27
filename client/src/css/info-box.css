@@ -1,7 +1,8 @@
 .loading{
   text-align: center;
   display: flex;
-
+  justify-content: center;
+  align-items: center;
 }
 .not-map{
   display: grid;
@@ -81,4 +82,8 @@
 
 .footer{
   grid-row: 4 / span 1;
+}
+
+.speaker{
+  width: 20px;
 }

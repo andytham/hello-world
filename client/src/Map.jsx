@@ -164,7 +164,7 @@ class Map extends React.Component {
             <InfoBox countries={this.state.countries} country={this.state.country}/>
             :
             <div className="loading">
-              Pick a country
+              <Loading />
             </div>
           }
           <Footer />
