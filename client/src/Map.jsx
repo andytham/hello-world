@@ -6,7 +6,6 @@ import Datamap from 'datamaps';
 import Title from './Title';
 import Loading from './Loading';
 import Footer from './Footer';
-import './css/map.css';
 import playImg from './images/play.png';
 import stopImg  from './images/stop.jpg';
 

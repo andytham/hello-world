@@ -1,7 +1,6 @@
 import React from 'react';
-import './css/info-box.css';
 import Translations from './Translations';
-var countryCheck = ""; //dont delete this variable, super hotfix
+var countryCheck = ""; //dont delete this variable
 
 class InfoBox extends React.Component {
   constructor(props) {

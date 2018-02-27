@@ -1,6 +1,10 @@
 import React from 'react';
 import Map from './Map';
 import './css/app.css';
+import './css/map.css';
+import './css/info-box.css';
+import './css/footer.css';
+import './css/phone.css';
 
 export default class App extends React.Component {
   constructor(props){

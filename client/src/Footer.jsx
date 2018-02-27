@@ -1,7 +1,6 @@
 import React from 'react';
 import heart from './images/heart.png';
 import github from './images/github.svg';
-import './css/footer.css';
 
 class Footer extends React.Component {
   render(){
@@ -12,7 +11,7 @@ class Footer extends React.Component {
           Created by Andy Tham - 2018
         </div>
         <div className="created-small">
-          Created by Andy Tham - 2018
+          Created by Andy Tham
         </div>
         <img className="footer-img" src={github} />
       </div>
