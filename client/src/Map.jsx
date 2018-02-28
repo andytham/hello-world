@@ -89,12 +89,50 @@ class Map extends React.Component {
     // $this.style('fill',"#FFFFFF")
     $this.style('stroke', "#FFFFFF")
     $this.style('stroke-width', "4")
+    $this.on('mousemove', null);
+    $this.on('mousemove',function(){
+      var position = d3.mouse(this);
+      d3.select('.datamaps-hoverover')
+      .style('top', ( (position[1] + 30)) + "px")
+      .style('left', ( position[0]) + "px")
+        .html(function() {
+          // var data = JSON.parse(d3.select('.datamaps-hoverover').attr('data-info'));
+          // console.log(d.properties.name);
+          try {
+            // console.log(d);
+            return (d.properties.name);
+          } catch (e) {
+            console.log(options);
+            return "";
+          }
+    })
+     d3.select('.datamaps-hoverover').style('display', 'block');
+  })
+    // $this.on('mousemove', function() {
+    //   console.log(this);
+      // var position = d3.mouse(this.options.element);
+      // d3.select(this.svg[0][0].parentNode).select('.datamaps-hoverover')
+      //   .style('top', ( (position[1] + 30)) + "px")
+      //   .html(function() {
+      //     var data = JSON.parse($this.attr('data-info'));
+      //     try {
+      //       return options.popupTemplate(d, data);
+      //     } catch (e) {
+      //       return "";
+      //     }
+      //   })
+      //   .style('left', ( position[0]) + "px");
+    // });
+    //
+    // d3.select(self.svg[0][0].parentNode).select('.datamaps-hoverover').style('display', 'block');
+
   })
   .on('mouseout', function(d) {
     let $this = d3.select(this);
     // $this.style('fill',"#000000")
     $this.style('stroke', "#FFFFFF")
     $this.style('stroke-width', "1")
+    d3.select('.datamaps-hoverover').style('display', 'none');
   })
 
 

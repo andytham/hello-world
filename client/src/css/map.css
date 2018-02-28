@@ -7,3 +7,13 @@
   /* background: url('http://www.xsjjys.com/data/out/229/WHDQ-513650512.jpg');
   background-size: cover ; */
 }
+
+.datamaps-hoverover{
+  border: 2px rgba(55, 55, 55, 0.79) solid;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 4px;
+  background-color: rgba(215, 15, 177, 0.8);
+  white-space: nowrap;
+  font-weight: bolder;
+}
