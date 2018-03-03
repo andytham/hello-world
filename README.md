@@ -44,20 +44,20 @@ This project will showcase a map of the world, and allow the user to click on an
 
 (pictures to be uploaded)
 
-### Functional Components
+### Functional Components (estimations)
 
 | Component | Priority | Est. Time | Time Invested | Actual Time |
 | ------------- | :---: | :-----: | :-----: | :-----: |
 | Setup | H | 4 hr(s) | 7 hr(s) | 4 hr(s) |
-| Map (D3) | H | 1 hr(s) |  hr(s) |  hr(s) |
-| Clickable Country | H | 3 hr(s) |  hr(s) |  hr(s) |
-| Display basic info on click | H | 3 hr(s) |  hr(s) |  hr(s) |
-| Display "Hello" | H | 5 hr(s) |  hr(s) |  hr(s) |
-| Flags | M | 2 hr(s) |  hr(s) |  hr(s) |
-| Sound clip | M | 8 hr(s) |  hr(s) |  hr(s) |
-| Regional dialects | M | 12.5 hr(s) |  hr(s) |  hr(s) |
-| Other phrases | M | 2+ hr(s) |  hr(s) |  hr(s) |
-| User input | L | 6 hr(s) |  hr(s) |  hr(s) |
+| Map (D3) | H | 1 hr(s) | 20 hr(s) | 8 hr(s) |
+| Clickable Country | H | 3 hr(s) | 4 hr(s) | 3 hr(s) |
+| Display basic info on click | H | 3 hr(s) | 10 hr(s) | 8 hr(s) |
+| Display "Hello" | H | 5 hr(s) | 6 hr(s) | 6 hr(s) |
+| Flags | M | 2 hr(s) | 4 hr(s) | 3 hr(s) |
+| Sound clip | M | 8 hr(s) | 6 hr(s) | 6 hr(s) |
+| Tooltip on Hover | L | 6 hr(s) | 3 hr(s) | 3 hr(s) |
+| CSS | H | 15 hr(s) | 12 hr(s) | 10 hr(s) |
+| Responsive | L | 8 hr(s) | 6 hr(s) | 5 hr(s) |
 
 
 ### Changelog
@@ -123,7 +123,7 @@ dont forget after you setup your account, to input the env variable for your cre
 2 hours getting jsons to work
 database seeding ~1 hour
 
-this context issue with d3 ~1.7 hours
+this context/scope issue with d3 ~1.7 hours
 ```
     let d3SelectCountry = this.selectCountry //need to bind this to a function because d3 overrides the this context
 ```
