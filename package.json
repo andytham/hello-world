@@ -13,7 +13,7 @@
     "build-dev": "webpack -d --progress",
     "build-watch": "webpack -d --progress --watch",
     "clean": "rm -rf public && rm -rf node_modules",
-    "heroku-postbuild": "webpack -p"
+    "heroku-postbuild": "webpack -p; rm -rf db client webpack.config.js .babelrc .gitignore README.md"
   },
   "repository": {
     "type": "git",
