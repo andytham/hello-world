@@ -38,6 +38,8 @@ class Map extends React.Component {
 
   renderMap() {
     let d3SelectCountry = this.selectCountry //need to bind this to a function because d3 overrides the this context
+    let isZoomed = false;
+    let zoomedZ = 0;
     var fills = {
       someOtherFill: '#aa9f9f',
       defaultFill: '#24ac24'
@@ -64,70 +66,76 @@ class Map extends React.Component {
       .attr("width", m_width)
       .attr("height", m_width * height / width);
 
-    svg.append("rect")
-      .attr("class", "background")
-      .attr("width", width)
-      .attr("height", height)
+    // svg.append("rect")
+    //   .attr("class", "background")
+    //   .attr("fill", "blue")
+    //   .attr("width", width)
+    //   .attr("height", height)
 
     var g = svg.append("g");
     function help(world) {
-      g.selectAll(".datamaps-subunit")
+      g.append("g")
+        .attr("id","countries")
+        .selectAll(".country-subunit")
         .data(topojson.feature(world, world.objects.world).features)
         .enter()
         .append("path")
         .attr("class", function(d) {
-          return "datamaps-subunit " + d.id;
+          return "country-subunit " + d.id;
         })
         .attr("d", path);
     }
     help(worldjson)
 
-    d3.selectAll(".datamaps-subunit")
+    // d3.selectAll(".country-subunit")
+    //   .attr("fill", "#24ac24")
+    //   .attr("stroke", "#FFFFFF")
+    //   .attr("stroke-width", "1")
+    d3.selectAll(".country-subunit")
       .attr("fill", "#24ac24")
-      .attr("stroke", "lightBlue")
+      .attr("stroke", "#FFFFFF")
       .attr("stroke-width", "1")
 
-    d3.selectAll('.datamaps-subunit')
-      .on('mouseover', function(d) {
-        let $this = d3.select(this);
-        // $this.style('fill',"#FFFFFF")
-        $this.style('stroke', "#FFFFFF")
-        $this.style('stroke-width', "1")
-        $this.on('mousemove', null);
-        $this.on('mousemove', function() {
-          var position = d3.mouse(this);
-          d3.select('.datamaps-hoverover').style('top', ((position[1] + 30)) + "px").style('left', (position[0]) + "px").html(function() {
-            try {
-              // console.log(d);
-              return (d.properties.name);
-            } catch (e) {
-              console.log(options);
-              return "";
-            }
-          })
-          d3.select('.datamaps-hoverover').style('display', 'block');
-        })
-      })
+    d3.selectAll('.country-subunit')
+      .on('mouseover', mouseover
+      // function(d) {
+      //   let $this = d3.select(this);
+      //   if (!isZoomed){
+      //     console.log(isZoomed);
+      //     $this.style('stroke', "#FFFFFF")
+      //     $this.style('stroke-width', "2")
+      //   } else {
+      //     console.log(isZoomed);
+      //     var xyz = get_xyz(d);
+      //     $this.style("stroke-width", 2.0 / xyz[2] + "px")
+      //   }
+      //   $this.on('mousemove', null);
+      //   $this.on('mousemove', function() {
+      //     var position = d3.mouse(this);
+      //     d3.select('.country-hoverover').style('top', ((position[1] + 30)) + "px").style('left', (position[0]) + "px").html(function() {
+      //       try {
+      //         // console.log(d);
+      //         return (d.properties.name);
+      //       } catch (e) {
+      //         console.log(options);
+      //         return "";
+      //       }
+      //     })
+      //     d3.select('.country-hoverover').style('display', 'block');
+      //   })}
+    )
       .on('click', click_country)
-      .on('mouseout', function(d) {
-        let $this = d3.select(this);
-        // $this.style('fill',"#000000")
-        $this.style('stroke', "#FFFFFF")
-        $this.style('stroke-width', "1")
-        d3.select('.datamaps-hoverover').style('display', 'none');
-      })
+      .on('mouseout', mouseout)
 
     function click_country(geography) {
-      var state_id = geography.id;
-      var new_fills = {
-        [geography.id]: "#c10000"
-      };
-      d3.selectAll('.datamaps-subunit').attr("fill", "red")
-      d3.select(this).attr("fill", "#000000")
+      d3.selectAll('.country-subunit').attr("fill", "#24ac24")
+      d3.select(this).attr("fill", "#c10000")
       var xyz = get_xyz(geography)
       if (geography && country !== geography) {
         var xyz = get_xyz(geography);
         country = geography;
+        isZoomed = true;
+        zoomedZ = xyz[2];
         zoom(xyz)
       } else {
         var xyz = [
@@ -136,16 +144,37 @@ class Map extends React.Component {
           1
         ];
         country = null;
+        isZoomed = false;
+        d3.select(this).attr("fill", "#24ac24")
         zoom(xyz);
+        zoomedZ = 1;
       }
-      d3SelectCountry(state_id)
+      d3SelectCountry(geography.id)
     }
 
-    var wind = window.d3
-
-    function zoom(xyz) {
-      g.transition().duration(1750).attr("transform", "translate(" + projection.translate() + ")scale(" + xyz[2] + ")translate(-" + xyz[0] + ",-" + xyz[1] + ")")
+    function mouseover(d){
+      let $this = d3.select(this);
+      if (!isZoomed){
+        $this.attr('stroke', "#FFFFFF")
+        $this.attr('stroke-width', "2")
+      } else {
+        $this.attr("stroke-width", String(2.0 / zoomedZ))
+      }
     }
+
+    function mouseout(d){
+      let $this = d3.select(this);
+      if (!isZoomed){
+        $this.attr('stroke', "#FFFFFF")
+        $this.attr('stroke-width', "1")
+      } else {
+        var xyz = get_xyz(d);
+        $this.attr("stroke-width", String(1.0 / zoomedZ))
+      }
+
+      d3.select('.country-hoverover').style('display', 'none');
+    }
+
 
     function get_xyz(d) {
       var bounds = path.bounds(d);
@@ -159,6 +188,14 @@ class Map extends React.Component {
       return [x, y, z];
     }
 
+    function zoom(xyz) {
+      g.transition().duration(1750).attr("transform", "translate(" + projection.translate() + ")scale(" + xyz[2] + ")translate(-" + xyz[0] + ",-" + xyz[1] + ")")
+
+
+      d3.selectAll(".country-subunit")
+      .attr("stroke-width", String(1.0 / xyz[2]))
+    }
+
     window.addEventListener('resize', function() {
       // var w = $("#map").width();
       var w_temp = d3.select("#map").style("width")
@@ -169,7 +206,7 @@ class Map extends React.Component {
     })
 
     // console.log("outside d3 function", this.props);
-
+    var wind = window.d3
     //randomly select country to display
     let d3animateState = this.animateState;
     let d3isAnimating = false;
@@ -178,7 +215,7 @@ class Map extends React.Component {
         d3isAnimating = true;
         wind.select('#animate').style('display', 'none')
         wind.select('#stop').style('display', 'block')
-        let poop = wind.selectAll('.datamaps-subunit')
+        let poop = wind.selectAll('.country-subunit')
         let playInterval = setInterval(function() {
 
           let gah = Math.trunc(Math.random() * poop[0].length)
