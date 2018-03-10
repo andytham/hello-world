@@ -118,6 +118,7 @@ class Map extends React.Component {
       .on('mouseout', mouseout)
 
     function click_country(geography) {
+      console.log(geography);
       d3.selectAll('.country-subunit').attr("fill", "#24ac24")
       d3.select(this).attr("fill", "#c10000")
       var xyz = get_xyz(geography)
@@ -168,6 +169,7 @@ class Map extends React.Component {
 
     function get_xyz(d) {
       var bounds = path.bounds(d);
+      console.log(bounds,'xyz');
       //bounds are two points creating a box that encompasses the svg
       var w_scale = (bounds[1][0] - bounds[0][0]) / width;
       var h_scale = (bounds[1][1] - bounds[0][1]) / height;
@@ -200,27 +202,22 @@ class Map extends React.Component {
     //randomly select country to display
     let d3animateState = this.animateState;
     let d3isAnimating = false;
+    function randomLoop(){
+      let poop = wind.selectAll('.country-subunit')
+      let gah = Math.trunc(Math.random() * poop[0].length)
+      console.log(gah);
+      let state_id = poop[0][gah].__data__.id
+      d3.selectAll(".country-subunit").attr("fill", "#24ac24")
+      d3.select(`.${state_id}`).attr("fill", "#c10000") //highlight selected random country
+      d3SelectCountry(state_id)
+    }
     wind.select('#animate').on('click', function() {
       if (!d3isAnimating) {
         d3isAnimating = true;
         wind.select('#animate').style('display', 'none')
         wind.select('#stop').style('display', 'block')
-        let poop = wind.selectAll('.country-subunit')
-        let gah = Math.trunc(Math.random() * poop[0].length)
-        console.log(gah);
-        let state_id = poop[0][gah].__data__.id
-        d3.selectAll(".country-subunit").attr("fill", "#24ac24")
-        d3.select(`.${state_id}`).attr("fill", "#c10000") //highlight selected random country
-        d3SelectCountry(state_id)
-        let playInterval = setInterval(function() {
-
-          let gah = Math.trunc(Math.random() * poop[0].length)
-          console.log(gah);
-          let state_id = poop[0][gah].__data__.id
-          d3.selectAll(".country-subunit").attr("fill", "#24ac24")
-          d3.select(`.${state_id}`).attr("fill", "#c10000") //highlight selected random country
-          d3SelectCountry(state_id)
-        }, 4000);
+        randomLoop()
+        let playInterval = setInterval(randomLoop, 3000);
         wind.select('#stop').on('click', function() {
           wind.select('#stop').style('display', 'none')
           wind.select('#animate').style('display', 'block')
@@ -237,8 +234,8 @@ class Map extends React.Component {
       <div className="not-map">
         <Title/>
         <div className="buttons">
-          <img className="button" id="animate" src={playImg}/>
-          <img className="button" id="stop" src={stopImg}/>
+          <div className="button" id="animate" > Random Loop? </div>
+          <div className="button" id="stop" > Stop Loop?</div>
         </div>
         {
           this.state.country
