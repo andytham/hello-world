@@ -98,17 +98,7 @@ class Map extends React.Component {
 
     d3.selectAll('.country-subunit')
       .on('mouseover', mouseover
-      // function(d) {
-      //   let $this = d3.select(this);
-      //   if (!isZoomed){
-      //     console.log(isZoomed);
-      //     $this.style('stroke', "#FFFFFF")
-      //     $this.style('stroke-width', "2")
-      //   } else {
-      //     console.log(isZoomed);
-      //     var xyz = get_xyz(d);
-      //     $this.style("stroke-width", 2.0 / xyz[2] + "px")
-      //   }
+
       //   $this.on('mousemove', null);
       //   $this.on('mousemove', function() {
       //     var position = d3.mouse(this);
@@ -216,18 +206,21 @@ class Map extends React.Component {
         wind.select('#animate').style('display', 'none')
         wind.select('#stop').style('display', 'block')
         let poop = wind.selectAll('.country-subunit')
+        let gah = Math.trunc(Math.random() * poop[0].length)
+        console.log(gah);
+        let state_id = poop[0][gah].__data__.id
+        d3.selectAll(".country-subunit").attr("fill", "#24ac24")
+        d3.select(`.${state_id}`).attr("fill", "#c10000") //highlight selected random country
+        d3SelectCountry(state_id)
         let playInterval = setInterval(function() {
 
           let gah = Math.trunc(Math.random() * poop[0].length)
+          console.log(gah);
           let state_id = poop[0][gah].__data__.id
-          basic_choropleth.updateChoropleth(null, {reset: true}) // resets map
-          var new_fills = {
-            [state_id]: "#c10000"
-          };
-          basic_choropleth.updateChoropleth(new_fills);
-          // d3.select(".country-name").text(state_id)
+          d3.selectAll(".country-subunit").attr("fill", "#24ac24")
+          d3.select(`.${state_id}`).attr("fill", "#c10000") //highlight selected random country
           d3SelectCountry(state_id)
-        }, 2000);
+        }, 4000);
         wind.select('#stop').on('click', function() {
           wind.select('#stop').style('display', 'none')
           wind.select('#animate').style('display', 'block')
