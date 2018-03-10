@@ -21,8 +21,16 @@ class Map extends React.Component {
     this.selectCountry = this.selectCountry.bind(this);
   }
   componentWillMount() {
-    console.log(worldjson);
-    console.log(JSON.stringify(worldjson));
+    // console.log(worldjson);
+    // console.log(req,'req');
+    // console.log(JSON.stringify(worldjson));
+    fetch(worldjson)
+      .then(res => {
+        return res.json();
+      })
+      .then(function(myJson) {
+    console.log(myJson);
+  })
   }
 
   componentDidMount() {
@@ -72,11 +80,7 @@ class Map extends React.Component {
       .attr("height", height)
 
     var g = svg.append("g");
-    var poop = JSON.stringify(worldjson)
-    var poop2 = JSON.parse(worldjson)
-    d3.json(poop, function(error, world) {
-      console.log(worldjson);
-      console.log(error);
+    function help(world) {
       g.selectAll(".datamaps-subunit")
         .data(topojson.feature(world, world.objects.world).features)
         .enter()
@@ -85,7 +89,8 @@ class Map extends React.Component {
           return "datamaps-subunit " + d.id;
         })
         .attr("d", path);
-    })
+    }
+    help(worldjson)
 
     d3.selectAll(".datamaps-subunit")
       .attr("fill", "#24ac24")
