@@ -21,16 +21,6 @@ class Map extends React.Component {
     this.selectCountry = this.selectCountry.bind(this);
   }
   componentWillMount() {
-    // console.log(worldjson);
-    // console.log(req,'req');
-    // console.log(JSON.stringify(worldjson));
-    fetch(worldjson)
-      .then(res => {
-        return res.json();
-      })
-      .then(function(myJson) {
-    console.log(myJson);
-  })
   }
 
   componentDidMount() {
@@ -135,9 +125,9 @@ class Map extends React.Component {
       d3.selectAll('.datamaps-subunit').attr("fill", "red")
       d3.select(this).attr("fill", "#000000")
       var xyz = get_xyz(geography)
-      if (d && country !== d) {
-        var xyz = get_xyz(d);
-        country = d;
+      if (geography && country !== geography) {
+        var xyz = get_xyz(geography);
+        country = geography;
         zoom(xyz)
       } else {
         var xyz = [
