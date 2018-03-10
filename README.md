@@ -59,6 +59,11 @@ This project will showcase a map of the world, and allow the user to click on an
 | CSS | H | 15 hr(s) | 12 hr(s) | 10 hr(s) |
 | Responsive | L | 8 hr(s) | 6 hr(s) | 5 hr(s) |
 
+### TODO
+
+Instead of using datamaps npm package, it will be more customizable and robust is we use plain vanilla D3.
+Datamaps is useful if you want to get something up and running quickly, and is extremely nifty, however, I want to be able to customize the map more, and also there is currently no option to use different map data other than the USA or a low res version of the world they provide (they have a hi-res version, but doesn't appear to be in the npm package.)
+
 
 ### Changelog
 2/20 - Datamaps package added
