@@ -68,7 +68,9 @@ class Map extends React.Component {
 
     d3.select("#map")
       .append("div")
-      
+      .attr("class", "country-hoverover")
+      .style("position", "absolute")
+
     // svg.append("rect")
     //   .attr("class", "background")
     //   .attr("fill", "blue")
@@ -185,7 +187,8 @@ class Map extends React.Component {
     }
 
     function zoom(xyz) {
-      g.transition().duration(1750).attr("transform", "translate(" + projection.translate() + ")scale(" + xyz[2] + ")translate(-" + xyz[0] + ",-" + xyz[1] + ")")
+      g.transition().duration(1750)
+        .attr("transform", "translate(" + projection.translate() + ")scale(" + xyz[2] + ")translate(-" + xyz[0] + ",-" + xyz[1] + ")")
 
 
       d3.selectAll(".country-subunit")
