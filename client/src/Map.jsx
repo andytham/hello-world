@@ -46,9 +46,11 @@ class Map extends React.Component {
     };
 
     var temp_width = d3.select("#map").style("width")
-    var m_width = +temp_width.split("px").join(""),
-      width = 938,
-      height = 500,
+    var temp_height = d3.select("#map").style("height")
+    var m_width = +temp_width.split("px").join(""), //grab the max width and height
+      m_height = +temp_height.split("px").join(""),
+      width = m_width,
+      height = m_height - 50,
       country,
       state;
     var projection = d3.geo.mercator()
@@ -63,12 +65,14 @@ class Map extends React.Component {
       .append("svg")
       .attr("preserveAspectRatio", "xMidYMid")
       .attr("viewBox", "0 0 " + width + " " + height)
-      .attr("width", m_width)
-      .attr("height", m_width * height / width);
+      .attr("width", width)
+      .attr("height", height);
 
+      //hover info box
     d3.select("#map")
       .append("div")
       .attr("class", "country-hoverover")
+      .style("display", "none")
       .style("position", "absolute")
 
     // svg.append("rect")

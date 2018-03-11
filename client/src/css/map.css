@@ -8,13 +8,13 @@
   background-size: cover ; */
 }
 
-.datamaps-hoverover{
+.country-hoverover{
   border: 2px rgba(55, 55, 55, 0.79) solid;
   border-radius: 3px;
   font-size: 16px;
   padding: 6px;
-  background-color: rgba(99, 54, 126, 0.6);
+  background-color: rgba(213, 213, 213, 0.6);
   white-space: nowrap;
   font-weight: bold;
-  color: #FFFFFF;
+  color: #000000;
 }
