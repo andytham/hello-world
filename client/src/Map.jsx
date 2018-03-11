@@ -66,6 +66,9 @@ class Map extends React.Component {
       .attr("width", m_width)
       .attr("height", m_width * height / width);
 
+    d3.select("#map")
+      .append("div")
+      
     // svg.append("rect")
     //   .attr("class", "background")
     //   .attr("fill", "blue")
@@ -97,23 +100,7 @@ class Map extends React.Component {
       .attr("stroke-width", "1")
 
     d3.selectAll('.country-subunit')
-      .on('mouseover', mouseover
-
-      //   $this.on('mousemove', null);
-      //   $this.on('mousemove', function() {
-      //     var position = d3.mouse(this);
-      //     d3.select('.country-hoverover').style('top', ((position[1] + 30)) + "px").style('left', (position[0]) + "px").html(function() {
-      //       try {
-      //         // console.log(d);
-      //         return (d.properties.name);
-      //       } catch (e) {
-      //         console.log(options);
-      //         return "";
-      //       }
-      //     })
-      //     d3.select('.country-hoverover').style('display', 'block');
-      //   })}
-    )
+      .on('mouseover', mouseover)
       .on('click', click_country)
       .on('mouseout', mouseout)
 
@@ -151,6 +138,24 @@ class Map extends React.Component {
       } else {
         $this.attr("stroke-width", String(2.0 / zoomedZ))
       }
+
+      $this.on('mousemove', null);
+      $this.on('mousemove', function() {
+        var position = d3.mouse(this);
+        d3.select('.country-hoverover')
+          .style('top', ((position[1] + 30)) + "px")
+          .style('left', (position[0]) + "px")
+          .html(function() {
+          try {
+            console.log(d);
+            return (d.properties.name);
+          } catch (e) {
+            console.log(options);
+            return "";
+          }
+        })
+        d3.select('.country-hoverover').style('display', 'block');
+      })
     }
 
     function mouseout(d){
@@ -188,7 +193,6 @@ class Map extends React.Component {
     }
 
     window.addEventListener('resize', function() {
-      // var w = $("#map").width();
       var w_temp = d3.select("#map").style("width")
       var w = + w_temp.split("px").join("")
       svg.attr("width", w);
@@ -203,7 +207,7 @@ class Map extends React.Component {
     let d3isAnimating = false;
 
     function randomLoop(){
-
+      // zoom back out first
       setTimeout(function(){
         var xyz = [
           width / 2,
