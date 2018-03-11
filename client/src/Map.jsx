@@ -201,7 +201,20 @@ class Map extends React.Component {
     //randomly select country to display
     let d3animateState = this.animateState;
     let d3isAnimating = false;
+
     function randomLoop(){
+
+      setTimeout(function(){
+        var xyz = [
+          width / 2,
+          height / 1.5,
+          1
+        ];
+        country = null;
+        isZoomed = false;
+        zoom(xyz);
+        console.log('pausing...');
+      }, 5500)
       let poop = wind.selectAll('.country-subunit')
       let gah = Math.trunc(Math.random() * poop[0].length)
       console.log(gah);
@@ -214,18 +227,29 @@ class Map extends React.Component {
       var xyz = get_xyz(poop[0][gah].__data__)
       zoom(xyz)
     }
+
     wind.select('#animate').on('click', function() {
       if (!d3isAnimating) {
         d3isAnimating = true;
         wind.select('#animate').style('display', 'none')
         wind.select('#stop').style('display', 'block')
         randomLoop()
-        let playInterval = setInterval(randomLoop, 3000);
+        let playInterval = setInterval(randomLoop, 7000);
         wind.select('#stop').on('click', function() {
           wind.select('#stop').style('display', 'none')
           wind.select('#animate').style('display', 'block')
           d3isAnimating = false;
           clearInterval(playInterval)
+          var xyz = [
+            width / 2,
+            height / 1.5,
+            1
+          ];
+          country = null;
+          isZoomed = false;
+          d3.select(this).attr("fill", "#24ac24")
+          zoom(xyz);
+          zoomedZ = 1;
         })
       }
     })
