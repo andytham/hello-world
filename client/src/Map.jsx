@@ -169,7 +169,6 @@ class Map extends React.Component {
 
     function get_xyz(d) {
       var bounds = path.bounds(d);
-      console.log(bounds,'xyz');
       //bounds are two points creating a box that encompasses the svg
       var w_scale = (bounds[1][0] - bounds[0][0]) / width;
       var h_scale = (bounds[1][1] - bounds[0][1]) / height;
@@ -210,6 +209,10 @@ class Map extends React.Component {
       d3.selectAll(".country-subunit").attr("fill", "#24ac24")
       d3.select(`.${state_id}`).attr("fill", "#c10000") //highlight selected random country
       d3SelectCountry(state_id)
+      //poop[0][gah].__data__.properties
+      console.log(poop[0][gah].__data__);
+      var xyz = get_xyz(poop[0][gah].__data__)
+      zoom(xyz)
     }
     wind.select('#animate').on('click', function() {
       if (!d3isAnimating) {
