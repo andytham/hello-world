@@ -157,7 +157,7 @@ class Map extends React.Component {
           .style('left', (position[0]) + "px")
           .html(function() {
           try {
-            console.log(d);
+            console.log(position);
             return (d.properties.name);
           } catch (e) {
             console.log(options);
@@ -187,7 +187,13 @@ class Map extends React.Component {
       //bounds are two points creating a box that encompasses the svg
       var w_scale = (bounds[1][0] - bounds[0][0]) / width;
       var h_scale = (bounds[1][1] - bounds[0][1]) / height;
-      var z = (.96 / Math.max(w_scale, h_scale)) / 3;
+
+      let fix_zoom = ["USA", "RUS", "NZL", "FJI", "GRL"]
+      if ( fix_zoom.indexOf(d.id) != -1 ){ //fixes weird zooming due to naturally large country size
+        var z = (.96 / Math.max(w_scale, h_scale));
+      } else {
+        var z = (.96 / Math.max(w_scale, h_scale)) / 3;
+      }
 
       var x = (bounds[1][0] + bounds[0][0]) / 2;
       var y = (bounds[1][1] + bounds[0][1]) / 2 + (height / z / 6);
