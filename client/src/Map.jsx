@@ -215,6 +215,7 @@ class Map extends React.Component {
       svg.attr("width", w);
       svg.attr("height", w * height / width);
       console.log("resizing");
+      console.log(w);
     })
 
     // console.log("outside d3 function", this.props);
