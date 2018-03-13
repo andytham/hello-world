@@ -188,8 +188,8 @@ class Map extends React.Component {
       var w_scale = (bounds[1][0] - bounds[0][0]) / width;
       var h_scale = (bounds[1][1] - bounds[0][1]) / height;
 
-      let fix_zoom = ["USA", "RUS", "NZL", "FJI", "GRL"]
-      if ( fix_zoom.indexOf(d.id) != -1 ){ //fixes weird zooming due to naturally large country size
+      let fix_zoom = ["USA", "RUS", "NZL", "FJI", "GRL", "KIR", "CAN"]
+      if ( fix_zoom.indexOf(d.id) != -1 ){ //fixes weird zooming due to naturally large country size and wrapping around
         var z = (.96 / Math.max(w_scale, h_scale));
       } else {
         var z = (.96 / Math.max(w_scale, h_scale)) / 3;
