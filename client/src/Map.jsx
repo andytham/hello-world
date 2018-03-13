@@ -50,11 +50,13 @@ class Map extends React.Component {
     var m_width = +temp_width.split("px").join(""), //grab the max width and height
       m_height = +temp_height.split("px").join(""),
       width = m_width,
-      height = m_height - 50,
+      // height = Math.min(width * (550 / 800), m_height - 50)
+      height = width * (550 / 800),
       country,
       state;
+      console.log(width);
     var projection = d3.geo.mercator()
-      .scale(150)
+      .scale(200)
       .translate([
         width / 2,
         height / 1.5
@@ -63,10 +65,11 @@ class Map extends React.Component {
     var path = d3.geo.path().projection(projection);
     var svg = d3.select("#map")
       .append("svg")
+      .attr("class", "map-svg")
       .attr("preserveAspectRatio", "xMidYMid")
       .attr("viewBox", "0 0 " + width + " " + height)
-      .attr("width", width)
-      .attr("height", height);
+      .attr("width", m_width)
+      .attr("height", m_width * height / width);
 
       //hover info box
     d3.select("#map")
@@ -81,7 +84,7 @@ class Map extends React.Component {
     //   .attr("width", width)
     //   .attr("height", height)
 
-    var g = svg.append("g");
+    var g = svg.append("g")
     function help(world) {
       g.append("g")
         .attr("id","countries")
@@ -89,6 +92,7 @@ class Map extends React.Component {
         .data(topojson.feature(world, world.objects.world).features)
         .enter()
         .append("path")
+
         .attr("class", function(d) {
           return "country-subunit " + d.id;
         })
