@@ -56,7 +56,7 @@ class Map extends React.Component {
       state;
       console.log(width);
     var projection = d3.geo.mercator()
-      .scale(200)
+      .scale(m_width/6.15) //fixed scaling issue, should have used variable to begin with
       .translate([
         width / 2,
         height / 1.5
