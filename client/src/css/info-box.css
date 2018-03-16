@@ -20,6 +20,7 @@
   height: 98%;
   background-color: white;
   overflow: hidden;
+  z-index: 1001;
 }
 
 .title{
