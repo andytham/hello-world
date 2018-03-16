@@ -1,20 +1,28 @@
 #map{
   z-index: 1000;
   position: relative;
-  display: block;
+  display: flex;
   width: 78%;
   background-color: #2287c1;
   /* background: url('http://www.xsjjys.com/data/out/229/WHDQ-513650512.jpg');
   background-size: cover ; */
+
+}
+svg{
+  overflow: visible;
+  
+}
+.map-svg{
+  align-self: center;
 }
 
-.datamaps-hoverover{
+.country-hoverover{
   border: 2px rgba(55, 55, 55, 0.79) solid;
   border-radius: 3px;
   font-size: 16px;
   padding: 6px;
-  background-color: rgba(99, 54, 126, 0.6);
+  background-color: rgba(213, 213, 213, 0.6);
   white-space: nowrap;
   font-weight: bold;
-  color: #FFFFFF;
+  color: #000000;
 }

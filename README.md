@@ -59,29 +59,14 @@ This project will showcase a map of the world, and allow the user to click on an
 | CSS | H | 15 hr(s) | 12 hr(s) | 10 hr(s) |
 | Responsive | L | 8 hr(s) | 6 hr(s) | 5 hr(s) |
 
+### TODO
 
-### Changelog
-2/20 - Datamaps package added
+Instead of using datamaps npm package, it will be more customizable and robust is we use plain vanilla D3.
+Datamaps is useful if you want to get something up and running quickly, and is extremely nifty, however, I want to be able to customize the map more, and also there is currently no option to use different map data other than the USA or a low res version of the world they provide (they have a hi-res version, but doesn't appear to be in the npm package.
+)
 
 
-### Resources
-
-http://datamaps.github.io/
-
-https://cloud.google.com/translate/docs/translating-text#translate-translate-text-ruby
-
-https://github.com/annexare/Countries
-
-https://d3-geomap.github.io/
-
-https://www.safaribooksonline.com/blog/2014/02/17/building-responsible-visualizations-d3-js/
-http://www.tnoda.com/blog/2013-12-07
-https://gist.github.com/tadast/8827699
-excellent tutorial to ruby exceptions
-http://rubylearning.com/satishtalim/ruby_exceptions.html
-### Issues and resolutions
-
-##$# A good country to language mapping resource issue
+ x
 There are plenty of resources that lists out the entire world's ever country's two letter or three code, known as the ISO 3166-1, (alpha-2 for 2 letter, alpha-3 for 3 letter, e.g. United States would be US).
 
 There are also plenty of resources that lists out from what I can tell, every language documented and it's accompanying ISO 639-1 and ISO 639-2 if they exist (two letter and three letter code, respectively).
