@@ -6,7 +6,7 @@ class Footer extends React.Component {
   render(){
     return(
       <div className="footer">
-        <img className="footer-img" src={heart} />
+        <a target="_blank" href="http://www.andytham.com"><img className="footer-img" src={heart} /></a>
         <div className="created">
           Created by Andy Tham - 2018
         </div>
@@ -16,7 +16,7 @@ class Footer extends React.Component {
         <div className="created-smaller">
           Andy Tham
         </div>
-        <img className="footer-img" src={github} />
+        <a ttarget="_blank" href="https://github.com/andytham/hello-world"><img className="footer-img" src={github} /> </a>
       </div>
     )
   }
