@@ -48,13 +48,13 @@ class Map extends React.Component {
     var temp_width = d3.select("#map").style("width")
     var temp_height = d3.select("#map").style("height")
     var m_width = +temp_width.split("px").join(""), //grab the max width and height
-      m_height = +temp_height.split("px").join(""),
-      width = m_width,
-      // height = Math.min(width * (550 / 800), m_height - 50)
-      height = width * (550 / 800),
-      country,
-      state;
-      console.log(width);
+        m_height = +temp_height.split("px").join(""),
+        width = m_width,
+        // height = Math.min(width * (550 / 800), m_height - 50)
+        height = width * (550 / 800),
+        country,
+        state;
+        // console.log(width);
     var projection = d3.geo.mercator()
       .scale(m_width/6.15) //fixed scaling issue, should have used variable to begin with
       .translate([
@@ -115,7 +115,7 @@ class Map extends React.Component {
       .on('mouseout', mouseout)
 
     function click_country(geography) {
-      console.log(geography);
+      // console.log(geography);
       d3.selectAll('.country-subunit').attr("fill", "#24ac24")
       d3.select(this).attr("fill", "#c10000")
       var xyz = get_xyz(geography)
@@ -157,10 +157,10 @@ class Map extends React.Component {
           .style('left', (position[0]) + "px")
           .html(function() {
           try {
-            console.log(position);
+            // console.log(position);
             return (d.properties.name);
           } catch (e) {
-            console.log(options);
+            // console.log(options);
             return "";
           }
         })
@@ -214,8 +214,8 @@ class Map extends React.Component {
       var w = + w_temp.split("px").join("")
       svg.attr("width", w);
       svg.attr("height", w * height / width);
-      console.log("resizing");
-      console.log(w);
+      // console.log("resizing");
+      // console.log(w);
     })
 
     // console.log("outside d3 function", this.props);
@@ -235,17 +235,17 @@ class Map extends React.Component {
         country = null;
         isZoomed = false;
         zoom(xyz);
-        console.log('pausing...');
+        // console.log('pausing...');
       }, 5500)
       let poop = wind.selectAll('.country-subunit')
       let gah = Math.trunc(Math.random() * poop[0].length)
-      console.log(gah);
+      // console.log(gah);
       let state_id = poop[0][gah].__data__.id
       d3.selectAll(".country-subunit").attr("fill", "#24ac24")
       d3.select(`.${state_id}`).attr("fill", "#c10000") //highlight selected random country
       d3SelectCountry(state_id)
       //poop[0][gah].__data__.properties
-      console.log(poop[0][gah].__data__);
+      // console.log(poop[0][gah].__data__);
       var xyz = get_xyz(poop[0][gah].__data__)
       zoom(xyz)
     }
