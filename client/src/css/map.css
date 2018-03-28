@@ -25,5 +25,9 @@ svg{
   white-space: nowrap;
   font-weight: bold;
   color: #000000;
-  z-index: 1002;
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  /* z-index: 1002; won't work */
 }

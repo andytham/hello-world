@@ -1,3 +1,6 @@
+hr{
+  width: 95%;
+}
 .loading{
   text-align: center;
   display: flex;
@@ -37,14 +40,26 @@
   display: flex;
   width: 100%;
   justify-content: space-around;
+  margin-top: 15px;
 }
 
 .button{
-  width: 50px;
+  padding: 5px;
+  text-align: center;
+  font-family: 'Noto Sans', sans-serif;
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
 }
-
+#animate{
+  border: 1px green solid;
+  border-radius: 10px;
+}
 #stop{
   display: none;
+  border: 1px red solid;
+  border-radius: 10px;
 }
 
 .info-box{
@@ -62,7 +77,8 @@
 
 .flag-image{
   width: 100%;
-  border: 1px black solid;
+  border-top: 1px black solid;
+  border-bottom: 1px black solid;
   max-height: 300px;
   align-self: center;
 }
