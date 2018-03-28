@@ -53,12 +53,12 @@ hr{
   -ms-user-select: none; /* IE10+/Edge */
 }
 #animate{
-  border: 1px green solid;
+  border: 2px green solid;
   border-radius: 10px;
 }
 #stop{
   display: none;
-  border: 1px red solid;
+  border: 2px red solid;
   border-radius: 10px;
 }
 

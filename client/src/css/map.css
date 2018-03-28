@@ -6,11 +6,11 @@
   background-color: #2287c1;
   /* background: url('http://www.xsjjys.com/data/out/229/WHDQ-513650512.jpg');
   background-size: cover ; */
-
 }
 svg{
   overflow: visible;
-
+  max-height: 100%;
+  /* fix clipping */
 }
 .map-svg{
   align-self: center;
