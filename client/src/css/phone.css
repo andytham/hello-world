@@ -127,7 +127,7 @@
 }
 
 .not-map{
-  width: 100%;
+  width: 98%;
   grid-row: 2 / span 1;
   display:grid;
   grid-template-columns: 220px 1fr;
