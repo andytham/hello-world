@@ -11,6 +11,12 @@ hr{
   overflow: hidden;
   width: 220px;
 }
+.loading-data{
+  text-align: center;
+}
+.loading-data-img{
+  width: 175px;
+}
 .not-map{
   display: grid;
   grid-template-rows: 100px 50px 1fr 50px;
