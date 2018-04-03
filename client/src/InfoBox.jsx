@@ -107,31 +107,48 @@ class InfoBox extends React.Component {
             {
               this.state.currentCountry
                 ? this.isNepal()
-                : ""
+                : <div className="loading-data">
+                  <img className="loading-data-img" src={require('./images/loading-data.gif')} />
+                  <br />
+                    Loading Data
+                  </div>
             }
           </div>
         </div>
         <div className="bottom-info">
-          <div className="country-name">
-            {this.state.currentCountry.name}
-            <br/>
-            ({this.state.currentCountry.native})
-            <br/>
-            <hr/>
-          </div>
+
+            {
+              this.state.currentCountry
+                ?
+              <div className="country-name">
+                {this.state.currentCountry.name}
+                <br/>
+                ({this.state.currentCountry.native})
+                <br/>
+                <hr/>
+              </div>
+                : ""
+            }
+
+
           <div className="hello">
             {
               this.state.translationsData
                 ? this.grabTranslation()
-                : "No translation data"
+                : ""
             }
           </div>
-          <div className="misc">
-            <hr />
-            Capital: {this.state.currentCountry.capital}
-            <br />
-            Currency: {this.state.currentCountry.currency}
-          </div>
+          {
+            this.state.currentCountry
+              ?
+            <div className="misc">
+              <hr />
+              Capital: {this.state.currentCountry.capital}
+              <br />
+              Currency: {this.state.currentCountry.currency}
+            </div>
+            : ""
+          }
         </div>
 
       </div>

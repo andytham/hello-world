@@ -11,6 +11,9 @@ hr{
   overflow: hidden;
   width: 220px;
 }
+.loading-data{
+  text-align: center;
+}
 .not-map{
   display: grid;
   grid-template-rows: 100px 50px 1fr 50px;
