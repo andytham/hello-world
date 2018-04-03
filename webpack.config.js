@@ -49,7 +49,7 @@ const config = {
       },
     }),
     new HtmlWebpackPlugin({
-      title:      'Say Hello',
+      title:      'Hello, World',
       xhtml:      true,
       inject:     false,
       template:   htmlTemplate,
