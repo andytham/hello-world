@@ -17,7 +17,7 @@ class InfoBox extends React.Component {
   }
   componentWillMount() {
     // console.log('mounting');
-    fetch("/api/translations").then(res => res.json()).then(translations => {
+    fetch("http://rails.andytham.com/api/translations").then(res => res.json()).then(translations => {
       this.setState({translationsData: translations})
     })
   }

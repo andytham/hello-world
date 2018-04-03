@@ -26,7 +26,8 @@ class Map extends React.Component {
   componentDidMount() {
     // console.log(this.props);
     this.renderMap()
-    fetch('/api/countries').then(res => res.json()).then(countries => {
+
+    fetch('http://rails.andytham.com/api/countries').then(res => res.json()).then(countries => {
       this.setState({countries: countries, country: ""})
     })
   }
