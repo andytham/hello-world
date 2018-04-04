@@ -26,7 +26,6 @@
   },
   "homepage": "",
   "dependencies": {
-    "@types/d3": "3.5.38",
     "babel": "^6.23.0",
     "babel-core": "*",
     "babel-loader": "^7.1.2",
@@ -39,7 +38,6 @@
     "clean-webpack-plugin": "^0.1.18",
     "css-loader": "^0.28.7",
     "d3": "^3.5.6",
-    "datamaps": "^0.5.8",
     "dotenv": "^5.0.0",
     "eslint": "^4.13.1",
     "eslint-config-airbnb": "^16.1.0",

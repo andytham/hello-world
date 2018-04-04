@@ -2,7 +2,6 @@ import React from 'react';
 import InfoBox from './InfoBox'
 import * as d3 from 'd3';
 import * as topojson from 'topojson';
-import Datamap from 'datamaps';
 import Title from './Title';
 import Loading from './Loading';
 import Footer from './Footer';
