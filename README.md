@@ -1,12 +1,10 @@
 ## Hello, World
 
-Inspired by Joe Keohan's love for D3 and this [infographic](https://i.pinimg.com/originals/55/ee/0b/55ee0bf828b83c1a1416c7cb1732d43f.jpg) from livinglanguage.com.
-
-This project will showcase a map of the world, and allow the user to click on any individual country. Upon clicking the country, information will appear on the side and how to say "hello" in that country's primary language and play a sound clip if available.
+This project will showcase a map of the world, and allow the user to click on any individual country. Upon clicking the country, information will appear on the side and how to say "hello" in that country's primary language and play a sound clip if available. Looping randomly around the world is available.
 
 Translations and audio files created through Google API and 'tts' gem.
 
-
+Inspired by Joe Keohan's love for D3 and this [infographic](https://i.pinimg.com/originals/55/ee/0b/55ee0bf828b83c1a1416c7cb1732d43f.jpg) from livinglanguage.com.
 ---
 ### Live version
 
