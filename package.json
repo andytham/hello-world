@@ -1,5 +1,5 @@
 {
-  "name": "say-hello",
+  "name": "hello-world",
   "version": "1.0.0",
   "description": "How to say hello in every language",
   "main": "server.js",
@@ -13,11 +13,12 @@
     "build-dev": "webpack -d --progress",
     "build-watch": "webpack -d --progress --watch",
     "clean": "rm -rf public && rm -rf node_modules",
-    "heroku-postbuild": "webpack -p; rm -rf db client webpack.config.js .babelrc .gitignore README.md"
+    "heroku-postbuild": "webpack -p; rm -rf db client webpack.config.js .babelrc .gitignore README.md",
+    "surge": "webpack&&surge ~/Projects/hello-world/public http://hello-world.andytham.com"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://git.generalassemb.ly/wdi-nyc/react-on-rails.git"
+    "url": "https://github.com/andytham/hello-world"
   },
   "author": "Andy Tham",
   "license": "SEE LICENSE IN LICENSE.txt",
