@@ -7,25 +7,49 @@ class InfoBox extends React.Component {
     super(props);
     this.state = {
       currentCountry: "",
-      equal: false
+      equal: false,
+      translationsData: null
     }
     this.sync = this.sync.bind(this);
     this.pause = this.pause.bind(this);
     this.displayHello = this.displayHello.bind(this);
     this.playHello = this.playHello.bind(this);
     this.isNepal = this.isNepal.bind(this);
+    this.seedTranslations = this.seedTranslations.bind(this);
   }
   componentWillMount() {
     // console.log('mounting');
-    fetch("http://rails.andytham.com/api/translations").then(res => res.json()).then(translations => {
-      this.setState({translationsData: translations})
-    })
+    function makeRequest (method, url, done) {
+      var xhr = new XMLHttpRequest();
+      xhr.open(method, url);
+      xhr.onload = function () {
+        done(null, xhr.response);
+      };
+      xhr.onerror = function () {
+        done(xhr.response);
+      };
+      xhr.send();
+    }
+    let xmlTranslate = this.seedTranslations
+    makeRequest('GET', 'http://rails.andytham.com/api/translations', function (err, datums) {
+      if (err) { throw err; }
+      let translations = JSON.parse(datums);
+      xmlTranslate(translations)
+    });
+
+    // modern browsers only
+    // fetch("http://rails.andytham.com/api/translations").then(res => res.json()).then(translations => {
+    //   this.setState({translationsData: translations})
+    // })
   }
 
   componentWillReceiveProps() {}
 
   componentDidUpdate() {
     // console.log("infobox updating");
+  }
+  seedTranslations(translations){
+    this.setState({ translationsData: translations})
   }
   sync() {
     if (this.state.currentCountry.country != this.props.country) {
