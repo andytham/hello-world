@@ -18,6 +18,7 @@ class Map extends React.Component {
     }
     this.renderMap = this.renderMap.bind(this);
     this.selectCountry = this.selectCountry.bind(this);
+    this.seedCountries = this.seedCountries.bind(this)
   }
   componentWillMount() {
   }
@@ -25,15 +26,38 @@ class Map extends React.Component {
   componentDidMount() {
     // console.log(this.props);
     this.renderMap()
+    function makeRequest (method, url, done) {
+      var xhr = new XMLHttpRequest();
+      xhr.open(method, url);
+      xhr.onload = function () {
+        done(null, xhr.response);
+      };
+      xhr.onerror = function () {
+        done(xhr.response);
+      };
+      xhr.send();
+    }
+    let xmlSeed = this.seedCountries
+    makeRequest('GET', 'http://rails.andytham.com/api/countries', function (err, datums) {
+      if (err) { throw err; }
+      console.log(JSON.parse(datums));
+      let countries = JSON.parse(datums);
+      xmlSeed(countries)
+    });
 
-    fetch('http://rails.andytham.com/api/countries').then(res => res.json()).then(countries => {
-      this.setState({countries: countries, country: ""})
-    })
+
+    // fetch('http://rails.andytham.com/api/countries').then(res => res.json()).then(countries => {
+    //   this.setState({countries: countries, country: ""})
+    // })
   }
   componentDidUpdate() {}
   selectCountry(selectedCountry) {
     this.setState({country: selectedCountry})
     // console.log(this.state.country);
+  }
+  seedCountries(countries){
+    //workaround for XML
+    this.setState({countries: countries})
   }
 
   renderMap() {
