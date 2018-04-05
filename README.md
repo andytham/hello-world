@@ -5,6 +5,7 @@ This project will showcase a map of the world, and allow the user to click on an
 Translations and audio files created through Google API and 'tts' gem.
 
 Inspired by Joe Keohan's love for D3 and this [infographic](https://i.pinimg.com/originals/55/ee/0b/55ee0bf828b83c1a1416c7cb1732d43f.jpg) from livinglanguage.com.
+
 ---
 ### Live version
 
@@ -63,6 +64,7 @@ Fix the hover info to work when resizing and when zoomed in (or change location 
 #### Functional Components (estimations)
 
 - version 1.0
+
 | Component | Priority | Est. Time | Time Invested | Actual Time |
 | ------------- | :---: | :-----: | :-----: | :-----: |
 | Setup | H | 4 hr(s) | 7 hr(s) | 4 hr(s) |
